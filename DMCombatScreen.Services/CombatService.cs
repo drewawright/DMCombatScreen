@@ -69,5 +69,35 @@ namespace DMCombatScreen.Services
                 return query.ToArray();
             }
         }
+
+        public bool UpdateCombat(CombatEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Combats
+                        .Single(e => e.CombatID == model.CombatID && e.OwnerID == _userID);
+
+                entity.Name = model.Name;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCombat(int combatID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Combats
+                        .Single(e => e.CombatID == combatID && e.OwnerID == _userID);
+
+                ctx.Combats.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

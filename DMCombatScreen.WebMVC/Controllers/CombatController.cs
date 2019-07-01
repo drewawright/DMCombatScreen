@@ -52,6 +52,69 @@ namespace DMCombatScreen.WebMVC.Controllers
             return View(detail);
         }
 
+        //GET: Combat/Edit/{id}
+        public ActionResult Edit(int id)
+        {
+            var svc = CreateCombatService();
+            var detail = svc.GetCombatByID(id);
+            var model =
+                new CombatEdit()
+                {
+                    CombatID = detail.CombatID,
+                    Name = detail.Name
+                };
+            return View(model);
+        }
+
+        //POST: Combat/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, CombatEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.CombatID != id)
+            {
+                ModelState.AddModelError("", "ID does not match");
+                return View(model);
+            }
+
+            var svc = CreateCombatService();
+
+            if (svc.UpdateCombat(model))
+            {
+                TempData["SaveResult"] = "Combat Updated";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Combat could not be updated");
+            return View(model);
+        }
+
+        //GET: Delete/Character/{id}
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateCombatService();
+            var model = svc.GetCombatByID(id);
+
+            return View(model);
+        }
+
+        //POST: Delete/Character/{id}
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCombat(int id)
+        {
+            var svc = CreateCombatService();
+            svc.DeleteCombat(id);
+
+            TempData["SaveResult"] = "Combat Deleted";
+
+            return RedirectToAction("Index");
+        }
+
         private CombatService CreateCombatService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());

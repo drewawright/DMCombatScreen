@@ -59,7 +59,8 @@ namespace DMCombatScreen.WebMVC.Controllers
             var svc = CreateCharacterService();
             var detail = svc.GetCharacterByID(id);
             var model =
-                new CharacterEdit
+                new CharacterEdit()
+
                 {
                     CharacterID = detail.CharacterID,
                     MaxHP = detail.MaxHP,

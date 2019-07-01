@@ -244,6 +244,8 @@
     <Content Include="Views\Combat\Index.cshtml" />
     <Content Include="Views\Combat\Create.cshtml" />
     <Content Include="Views\Combat\Details.cshtml" />
+    <Content Include="Views\Combat\Delete.cshtml" />
+    <Content Include="Views\Combat\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

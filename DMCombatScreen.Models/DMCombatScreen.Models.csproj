@@ -48,6 +48,7 @@
     <Compile Include="CharacterListItem.cs" />
     <Compile Include="CombatCreate.cs" />
     <Compile Include="CombatDetail.cs" />
+    <Compile Include="CombatEdit.cs" />
     <Compile Include="CombatListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
