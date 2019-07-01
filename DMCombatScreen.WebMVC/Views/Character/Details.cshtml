@@ -1,0 +1,68 @@
+﻿@model DMCombatScreen.Models.CharacterDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CharacterDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        @if (!Model.IsPlayer)
+        {
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxHP)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaxHP)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InitiativeModifier)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InitiativeModifier)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InitiativeAbilityScore)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InitiativeAbilityScore)
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPlayer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPlayer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CharacterID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

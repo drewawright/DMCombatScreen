@@ -53,5 +53,59 @@ namespace DMCombatScreen.Services
                 return query.ToArray();
             }
         }
+
+        public CharacterDetail GetCharacterByID(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx.
+                        Characters.
+                        Single(e => e.CharacterID == id);
+                return
+                    new CharacterDetail
+                    {
+                        CharacterID = entity.CharacterID,
+                        Name = entity.Name,
+                        MaxHP = entity.MaxHP,
+                        InitiativeModifier = entity.InitiativeModifier,
+                        InitiativeAbilityScore = entity.InitiativeAbilityScore,
+                        IsPlayer = entity.IsPlayer
+                    };
+            }
+        }
+
+        public bool UpdateCharacter(CharacterEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Characters
+                        .Single(e => e.CharacterID == model.CharacterID);
+
+                entity.Name = model.Name;
+                entity.MaxHP = model.MaxHP;
+                entity.InitiativeModifier = model.InitiativeModifier;
+                entity.InitiativeAbilityScore = model.InitiativeAbilityScore;
+                entity.IsPlayer = model.IsPlayer;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCharacter(int characterID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Characters
+                        .Single(e => e.CharacterID == characterID);
+                ctx.Characters.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
