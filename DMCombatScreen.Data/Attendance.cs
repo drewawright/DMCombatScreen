@@ -11,6 +11,7 @@ namespace DMCombatScreen.Data
     public class Attendance
     {
         public int ID { get; set; }
+        public Guid OwnerID { get; set; }
         [ForeignKey(nameof(Character))]
         public int CharacterID { get; set; }
         public virtual Character Character { get; set; }

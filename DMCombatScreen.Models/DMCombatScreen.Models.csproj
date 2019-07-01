@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttendanceListItem.cs" />
     <Compile Include="CharacterCreate.cs" />
     <Compile Include="CharacterDetail.cs" />
     <Compile Include="CharacterEdit.cs" />
@@ -51,6 +52,12 @@
     <Compile Include="CombatEdit.cs" />
     <Compile Include="CombatListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DMCombatScreen.Data\DMCombatScreen.Data.csproj">
+      <Project>{AFF37201-0205-4A71-88FD-2B0F076D494B}</Project>
+      <Name>DMCombatScreen.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

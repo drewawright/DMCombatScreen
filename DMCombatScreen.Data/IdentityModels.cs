@@ -34,7 +34,8 @@ namespace DMCombatScreen.Data
 
         public DbSet<Character> Characters { get; set; }
         public DbSet<Combat> Combats { get; set; }
-
+        public DbSet<Attendance> Attendances { get; set; }
+ 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

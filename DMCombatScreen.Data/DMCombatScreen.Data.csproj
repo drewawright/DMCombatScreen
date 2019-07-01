@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201907011845493_OwnerIDForCombat.Designer.cs">
       <DependentUpon>201907011845493_OwnerIDForCombat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907011957544_addedAttendances.cs" />
+    <Compile Include="Migrations\201907011957544_addedAttendances.Designer.cs">
+      <DependentUpon>201907011957544_addedAttendances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907011845493_OwnerIDForCombat.resx">
       <DependentUpon>201907011845493_OwnerIDForCombat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907011957544_addedAttendances.resx">
+      <DependentUpon>201907011957544_addedAttendances.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

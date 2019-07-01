@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttendanceService.cs" />
     <Compile Include="CharacterService.cs" />
     <Compile Include="CombatService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
