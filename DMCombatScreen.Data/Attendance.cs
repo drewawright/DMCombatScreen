@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace DMCombatScreen.Data
         [ForeignKey(nameof(Combat))]
         public int CombatID { get; set; }
         public virtual Combat Combat { get; set; }
+        [Display(Name = "Current HP")]
         public int CurrentHP { get; set; }
     }
 }
