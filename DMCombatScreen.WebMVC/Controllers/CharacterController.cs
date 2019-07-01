@@ -1,4 +1,6 @@
 ﻿using DMCombatScreen.Models;
+using DMCombatScreen.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +14,14 @@ namespace DMCombatScreen.WebMVC.Controllers
         // GET: Character/Index
         public ActionResult Index()
         {
-            var model = new CharacterListItem[0];
+            var service = CreateCharacterService();
+            var model = service.GetCharacters();
             return View(model);
         }
 
+
         //GET: Character/Create
-        public ActionResult CreatePlayer()
+        public ActionResult Create()
         {
             return View();
         }
@@ -25,13 +29,27 @@ namespace DMCombatScreen.WebMVC.Controllers
         //POST: Character/Create{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePlayer(CharacterPlayerCreate model)
+        public ActionResult Create(CharacterCreate model)
         {
-            if (ModelState.IsValid)
-            {
+            if (!ModelState.IsValid)return View(model);
 
-            }
+            var service = CreateCharacterService();
+
+            if (service.CreateCharacter(model))
+            {
+                TempData["SaveResult"] = "Character Created Successfully";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Character could not be created.");
             return View(model);
+        }
+
+        private CharacterService CreateCharacterService()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var service = new CharacterService(userID);
+            return service;
         }
     }
 }
