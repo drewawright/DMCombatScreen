@@ -26,7 +26,7 @@ namespace DMCombatScreen.WebMVC.Controllers
             return View();
         }
         
-        //POST: Character/Create{id}
+        //POST: Character/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CharacterCreate model)
@@ -39,7 +39,7 @@ namespace DMCombatScreen.WebMVC.Controllers
             {
                 TempData["SaveResult"] = "Character Created Successfully";
                 return RedirectToAction("Index");
-            };
+            }
 
             ModelState.AddModelError("", "Character could not be created.");
             return View(model);

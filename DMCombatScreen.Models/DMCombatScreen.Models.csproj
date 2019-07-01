@@ -46,6 +46,9 @@
     <Compile Include="CharacterDetail.cs" />
     <Compile Include="CharacterEdit.cs" />
     <Compile Include="CharacterListItem.cs" />
+    <Compile Include="CombatCreate.cs" />
+    <Compile Include="CombatDetail.cs" />
+    <Compile Include="CombatListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
