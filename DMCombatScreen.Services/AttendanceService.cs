@@ -24,10 +24,7 @@ namespace DMCombatScreen.Services
                 {
                     OwnerID = _userID,
                     CharacterID = model.CharacterID,
-                    Character = model.Character,
                     CombatID = model.CombatID,
-                    Combat = model.Combat,
-                    //CurrentHP = model.Character.MaxHP
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -72,7 +69,7 @@ namespace DMCombatScreen.Services
                         CharacterName = entity.Character.Name,
                         CombatID = entity.CombatID,
                         CombatName = entity.Combat.Name,
-                        CurrentHP = entity.CurrentHP
+                        CurrentHP = entity.Character.MaxHP
                     };
             }
         }

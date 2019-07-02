@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DMCombatScreen.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace DMCombatScreen.Models
         public int CharacterID { get; set; }
         [Display(Name = "Character Name")]
         public string CharacterName { get; set; }
+        public Character Character { get; set; }
         [Display(Name = "Combat ID")]
         public int CombatID { get; set; }
         [Display(Name = "Combat Name")]
         public string CombatName { get; set; }
+        [Display(Name = "Current HP")]
         public int? CurrentHP { get; set; }
 
     }

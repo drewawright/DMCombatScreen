@@ -25,7 +25,16 @@
         <dd>
             @Html.DisplayFor(model => model.CharacterName)
         </dd>
+@if (Model.CurrentHP != null)
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentHP)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.CurrentHP)
+        </dd>
+}
         <dt>
             @Html.DisplayNameFor(model => model.CombatID)
         </dt>
