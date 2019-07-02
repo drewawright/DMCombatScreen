@@ -1,0 +1,50 @@
+﻿@model DMCombatScreen.Models.AttendanceDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>AttendanceDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CombatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CombatID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CombatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CombatName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
