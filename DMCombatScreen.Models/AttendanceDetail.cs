@@ -18,5 +18,7 @@ namespace DMCombatScreen.Models
         public int CombatID { get; set; }
         [Display(Name = "Combat Name")]
         public string CombatName { get; set; }
+        public int? CurrentHP { get; set; }
+
     }
 }

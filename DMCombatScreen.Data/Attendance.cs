@@ -19,6 +19,6 @@ namespace DMCombatScreen.Data
         public int CombatID { get; set; }
         public virtual Combat Combat { get; set; }
         [Display(Name = "Current HP")]
-        public int CurrentHP { get; set; }
+        public int? CurrentHP { get; set; }
     }
 }

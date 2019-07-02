@@ -26,7 +26,8 @@ namespace DMCombatScreen.Services
                     CharacterID = model.CharacterID,
                     Character = model.Character,
                     CombatID = model.CombatID,
-                    Combat = model.Combat
+                    Combat = model.Combat,
+                    //CurrentHP = model.Character.MaxHP
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -70,8 +71,40 @@ namespace DMCombatScreen.Services
                         CharacterID = entity.CharacterID,
                         CharacterName = entity.Character.Name,
                         CombatID = entity.CombatID,
-                        CombatName = entity.Combat.Name
+                        CombatName = entity.Combat.Name,
+                        CurrentHP = entity.CurrentHP
                     };
+            }
+        }
+
+        public bool UpdateAttendance(AttendanceEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Attendances
+                        .Single(e => e.ID == model.ID && e.OwnerID == _userID);
+
+                entity.CharacterID = model.CharacterID;
+                entity.CombatID = model.CombatID;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteAttendance(int attendanceID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Attendances
+                        .Single(e => e.ID == attendanceID && e.OwnerID == _userID);
+
+                ctx.Attendances.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

@@ -250,6 +250,8 @@
     <Content Include="Views\Attendance\Index.cshtml" />
     <Content Include="Views\Attendance\Create.cshtml" />
     <Content Include="Views\Attendance\Details.cshtml" />
+    <Content Include="Views\Attendance\Edit.cshtml" />
+    <Content Include="Views\Attendance\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

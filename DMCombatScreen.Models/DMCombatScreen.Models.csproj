@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AttendanceCreate.cs" />
     <Compile Include="AttendanceDetail.cs" />
+    <Compile Include="AttendanceEdit.cs" />
     <Compile Include="AttendanceListItem.cs" />
     <Compile Include="CharacterCreate.cs" />
     <Compile Include="CharacterDetail.cs" />
