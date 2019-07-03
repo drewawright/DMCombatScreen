@@ -17,15 +17,12 @@ namespace DMCombatScreen.Data
         public string Name { get; set; }
         [Display(Name = "Max HP")]
         public int? MaxHP { get; set; }
-        //public int CurrentHP { get; set; }
         [Display(Name = "Initiative Roll")]
         public int? InitiativeRoll { get; set; }
         [Display(Name = "Initiative Modifier")]
         public int? InitiativeModifier { get; set; }
         [Display(Name = "Initiative Ability Score")]
         public int? InitiativeAbilityScore { get; set; }
-        [Display(Name = "Initiative")]
-        public int? TotalInitiative { get; set; }
         [Required]
         [Display(Name = "Player?")]
         public bool IsPlayer { get; set; }

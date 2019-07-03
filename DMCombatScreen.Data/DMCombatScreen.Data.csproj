@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201907021258073_attendanceHPnullable.Designer.cs">
       <DependentUpon>201907021258073_attendanceHPnullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907031510596_movedTotalInitiativeFromCharacterToAttendance.cs" />
+    <Compile Include="Migrations\201907031510596_movedTotalInitiativeFromCharacterToAttendance.Designer.cs">
+      <DependentUpon>201907031510596_movedTotalInitiativeFromCharacterToAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907021258073_attendanceHPnullable.resx">
       <DependentUpon>201907021258073_attendanceHPnullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907031510596_movedTotalInitiativeFromCharacterToAttendance.resx">
+      <DependentUpon>201907031510596_movedTotalInitiativeFromCharacterToAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

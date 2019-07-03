@@ -1,0 +1,70 @@
+﻿@model List<DMCombatScreen.Models.RunCombatDetail>
+
+@{
+    ViewBag.Title = "RollInitiative";
+}
+
+<h2>RollInitiative</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => Model[0].CombatID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => Model[0].Character.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => Model[0].InitiativeEntry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => Model[0].CurrentHP)
+            </th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            @Html.HiddenFor(model => model[i].ID)
+            @Html.HiddenFor(model => model[i].CombatID)
+            @Html.HiddenFor(model => model[i].CharacterID)
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model[i].CombatID)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model[i].Character.Name)
+                </td>
+
+                <td>
+                    @Html.EditorFor(model => model[i].InitiativeEntry)
+                    @Html.ValidationMessageFor(model => model[i].CurrentInitiative, "", new { @class = "text-danger" })
+                </td>
+
+                @if (!Model[i].Character.IsPlayer)
+                {
+                    <td>
+                        @Html.EditorFor(model => model[i].CurrentHP)
+                        @Html.ValidationMessageFor(model => model[i].CurrentHP, "", new { @class = "text-danger" })
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            </tr>
+        }
+
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+}

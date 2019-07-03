@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DMCombatScreen.Models.RunCombatDetail>
+
+@{
+    ViewBag.Title = "RunCombat";
+}
+
+<h2>RunCombat</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Character.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentInitiative)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentHP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Character.MaxHP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Character.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentInitiative)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentHP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Character.MaxHP)
+        </td>
+        <td>
+        </td>
+    </tr>
+}
+
+</table>

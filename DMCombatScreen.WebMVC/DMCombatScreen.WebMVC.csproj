@@ -173,6 +173,7 @@
     <Compile Include="Controllers\CombatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RunCombatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +253,10 @@
     <Content Include="Views\Attendance\Details.cshtml" />
     <Content Include="Views\Attendance\Edit.cshtml" />
     <Content Include="Views\Attendance\Delete.cshtml" />
+    <Content Include="Views\RunCombat\Index.cshtml" />
+    <Content Include="Views\RunCombat\Detail.cshtml" />
+    <Content Include="Views\RunCombat\RollInitiative.cshtml" />
+    <Content Include="Views\RunCombat\RunCombat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
