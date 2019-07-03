@@ -26,11 +26,12 @@
             @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Character.Name)
+            @Html.DisplayNameFor(model => model.CharacterName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Combat.Name)
+            @Html.DisplayNameFor(model => model.CombatName)
         </th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -40,10 +41,10 @@
                 @Html.DisplayFor(modelItem => item.ID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Character.Name)
+                @Html.DisplayFor(modelItem => item.CharacterName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Combat.Name)
+                @Html.DisplayFor(modelItem => item.CombatName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

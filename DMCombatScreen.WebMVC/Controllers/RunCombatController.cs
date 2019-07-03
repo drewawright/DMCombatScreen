@@ -31,14 +31,14 @@ namespace DMCombatScreen.WebMVC.Controllers
         public ActionResult RollInitiative(int id)
         {
             var svc = CreateRunCombatService();
-            var model = svc.GetCombatantsList(id).ToList();
+            var model = svc.GetInitiativeList(id).ToList();
             return View(model);
         }
 
         //POST: RunCombat/RollInitiative/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RollInitiative(IEnumerable<RunCombatDetail> model, int id)
+        public ActionResult RollInitiative(List<RunCombatInitiative> model, int id) 
         {
             var svc = CreateRunCombatService();
 
@@ -60,12 +60,12 @@ namespace DMCombatScreen.WebMVC.Controllers
         }
 
         //GET: RunCombat/RunCombat/{id}
-        public ActionResult RunCombat(int id)
-        {
-            var svc = CreateRunCombatService();
-            var model = svc.GetCombatantsList(id).OrderBy(e => e.CurrentInitiative).ThenBy(e => e.Character.InitiativeAbilityScore).ThenBy(e => e.Character.IsPlayer).Reverse().ToArray();
-            return View(model);
-        }
+        //public ActionResult RunCombat(int id)
+       // {
+            //var svc = CreateRunCombatService();
+            //var model = svc.GetCombatantsList(id).OrderBy(e => e.CurrentInitiative).ThenBy(e => e.Character.InitiativeAbilityScore).ThenBy(e => e.Character.IsPlayer).Reverse().ToArray();
+            //return View(model);
+        //}
 
         private RunCombatService CreateRunCombatService()
         {

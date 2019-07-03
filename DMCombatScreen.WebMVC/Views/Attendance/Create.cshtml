@@ -17,18 +17,18 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Character.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CharacterName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("CharacterID", null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Character.Name, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.CharacterName, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Combat.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CombatName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("CombatID", null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Combat.Name, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.CombatName, "", new { @class = "text-danger" })
         </div>
     </div>
 

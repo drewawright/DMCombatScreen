@@ -47,8 +47,10 @@ namespace DMCombatScreen.Services
                             new AttendanceListItem
                             {
                                 ID = e.ID,
-                                Character = e.Character,
-                                Combat = e.Combat
+                                CharacterID = e.Character.CharacterID,
+                                CharacterName = e.Character.Name,
+                                CombatID = e.Combat.CombatID,
+                                CombatName = e.Combat.Name
                             });
                 return query.ToArray();
             }

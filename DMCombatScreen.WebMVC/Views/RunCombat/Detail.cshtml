@@ -6,16 +6,13 @@
 
 <h2>Detail</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CombatID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Character.Name)
+            @Html.DisplayNameFor(model => model.CharacterName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CurrentHP)
@@ -29,9 +26,9 @@
             @Html.DisplayFor(modelItem => item.CombatID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Character.Name)
+            @Html.DisplayFor(modelItem => item.CharacterName)
         </td>
-        @if (!item.Character.IsPlayer)
+        @if (!item.IsPlayer)
         {
             <td>
                 @Html.DisplayFor(modelItem => item.CurrentHP)
@@ -42,9 +39,9 @@
             <td></td>
         }
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
     </tr>
 }

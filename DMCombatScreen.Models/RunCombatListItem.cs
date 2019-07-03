@@ -11,6 +11,6 @@ namespace DMCombatScreen.Models
     {
         public int ID { get; set; }
         public int CombatID { get; set; }
-        public Combat Combat { get; set; }
+        public string CombatName { get; set; }
     }
 }
