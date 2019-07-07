@@ -68,6 +68,39 @@ namespace DMCombatScreen.WebMVC.Controllers
             return View(model);
         }
 
+        //GET: RunCombat/Attack/{id}
+        public ActionResult Attack(int id)
+        {
+            var svc = CreateRunCombatService();
+            var model = svc.GetOneCombatant(id);
+            return View(model);
+        }
+
+        //POST: RunCombat/Attack/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Attack (RunCombatCharacter model, int id)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ID != id)
+            {
+                ModelState.AddModelError("", "ID does not match");
+                return View(model);
+            }
+
+            var svc = CreateRunCombatService();
+
+            if (svc.UpdateCharacterHP(model))
+            {
+                TempData["SaveResult"] = "Initiative Successfully Rolled";
+                return RedirectToAction("RunCombat", new { id = model.CombatID });
+            }
+
+            ModelState.AddModelError("", "HP could not be updated.");
+            return View(model);
+        }
+
         private RunCombatService CreateRunCombatService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());

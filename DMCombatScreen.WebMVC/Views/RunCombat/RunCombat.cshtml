@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DMCombatScreen.Models.RunCombatDetail>
+﻿@model IEnumerable<DMCombatScreen.Models.RunCombatCharacter>
 
 @{
     ViewBag.Title = "RunCombat";
@@ -6,19 +6,23 @@
 
 <h2>RunCombat</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Character.Name)
+            @Html.DisplayNameFor(model => model.CharacterName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CurrentInitiative)
+            @Html.DisplayNameFor(model => model.TotalInitiative)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CurrentHP)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Character.MaxHP)
+            @Html.DisplayNameFor(model => model.MaxHP)
         </th>
         <th></th>
     </tr>
@@ -26,18 +30,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Character.Name)
+            @Html.DisplayFor(modelItem => item.CharacterName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CurrentInitiative)
+            @Html.DisplayFor(modelItem => item.TotalInitiative)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CurrentHP)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Character.MaxHP)
+            @Html.DisplayFor(modelItem => item.MaxHP)
         </td>
         <td>
+            @Html.ActionLink("Attack", "Attack", new { id = item.ID})
         </td>
     </tr>
 }

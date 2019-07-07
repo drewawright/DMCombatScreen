@@ -257,6 +257,7 @@
     <Content Include="Views\RunCombat\Detail.cshtml" />
     <Content Include="Views\RunCombat\RollInitiative.cshtml" />
     <Content Include="Views\RunCombat\RunCombat.cshtml" />
+    <Content Include="Views\RunCombat\Attack.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

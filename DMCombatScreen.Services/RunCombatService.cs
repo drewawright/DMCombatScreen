@@ -142,5 +142,44 @@ namespace DMCombatScreen.Services
                 return query.ToList();
             }
         }
+
+        public RunCombatCharacter GetOneCombatant(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Attendances
+                    .Single(e => e.ID == id);
+
+                    return 
+                        new RunCombatCharacter
+                        {
+                            ID = query.ID,
+                            CharacterID = query.CharacterID,
+                            CharacterName = query.Character.Name,
+                            CombatID = query.CombatID,
+                            CombatName = query.Combat.Name,
+                            TotalInitiative = query.CurrentInitiative,
+                            InitiativeAbilityScore = query.Character.InitiativeAbilityScore,
+                            MaxHP = query.Character.MaxHP,
+                            CurrentHP = query.CurrentHP,
+                            IsPlayer = query.Character.IsPlayer,
+                        };
+            }
+        }
+
+        public bool UpdateCharacterHP(RunCombatCharacter model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx.Attendances
+                    .Single(e => e.ID == model.ID);
+
+                entity.CurrentHP = model.CurrentHP;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
