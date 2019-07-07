@@ -47,11 +47,12 @@ namespace DMCombatScreen.WebMVC.Controllers
             //if (model.ID != id)
             //{
             //    ModelState.AddModelError("", "ID does not match");
-            //    return View(model);
+            //   return View(model);
             //}
 
             if (svc.SetInitiatives(model))
             {
+                TempData["SaveResult"] = "Initiative Successfully Rolled";
                 return RedirectToAction("Index");
             }
 
@@ -60,12 +61,12 @@ namespace DMCombatScreen.WebMVC.Controllers
         }
 
         //GET: RunCombat/RunCombat/{id}
-        //public ActionResult RunCombat(int id)
-       // {
-            //var svc = CreateRunCombatService();
-            //var model = svc.GetCombatantsList(id).OrderBy(e => e.CurrentInitiative).ThenBy(e => e.Character.InitiativeAbilityScore).ThenBy(e => e.Character.IsPlayer).Reverse().ToArray();
-            //return View(model);
-        //}
+        public ActionResult RunCombat(int id)
+        {
+            var svc = CreateRunCombatService();
+            var model = svc.GetCombatCharacterList(id).OrderBy(e => e.TotalInitiative).ThenBy(e => e.InitiativeAbilityScore).ThenBy(e => e.IsPlayer).Reverse().ToArray();
+            return View(model);
+        }
 
         private RunCombatService CreateRunCombatService()
         {

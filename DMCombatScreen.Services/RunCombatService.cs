@@ -113,7 +113,33 @@ namespace DMCombatScreen.Services
                     }
                 }
 
-                return ctx.SaveChanges() == 1;
+                var actual = ctx.SaveChanges();
+                return actual == model.Count();
+            }
+        }
+
+        public List<RunCombatCharacter> GetCombatCharacterList(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                        ctx.Attendances
+                        .Where(e => e.CombatID == id && e.OwnerID == _userID)
+                        .Select(
+                            e => new RunCombatCharacter
+                            {
+                                ID = e.ID,
+                                CharacterID = e.CharacterID,
+                                CharacterName = e.Character.Name,
+                                CombatID = e.CombatID,
+                                CombatName = e.Combat.Name,
+                                TotalInitiative = e.CurrentInitiative,
+                                InitiativeAbilityScore = e.Character.InitiativeAbilityScore,
+                                MaxHP = e.Character.MaxHP,
+                                CurrentHP = e.CurrentHP,
+                                IsPlayer = e.Character.IsPlayer,
+                            });
+                return query.ToList();
             }
         }
     }
