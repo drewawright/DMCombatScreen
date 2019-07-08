@@ -1,4 +1,4 @@
-﻿@model DMCombatScreen.Models.RunCombatCharacter
+﻿@model DMCombatScreen.Models.RunCombatAttack
 
 @{
     ViewBag.Title = "Attack";
@@ -17,6 +17,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
         @Html.HiddenFor(model => model.CombatID)
+        @Html.HiddenFor(model => model.CurrentTurn)
 
         <div class="form-group">
             @Html.LabelFor(model => model.CharacterName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -49,7 +50,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "RunCombat", new { id = Model.CombatID, SelectedCharacter = Model.CurrentTurn })
 </div>
 
 @section Scripts {

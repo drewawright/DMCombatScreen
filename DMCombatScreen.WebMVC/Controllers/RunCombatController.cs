@@ -61,25 +61,46 @@ namespace DMCombatScreen.WebMVC.Controllers
         }
 
         //GET: RunCombat/RunCombat/{id}
-        public ActionResult RunCombat(int id)
+        public ActionResult RunCombat(int id, int? SelectedCharacter)
         {
             var svc = CreateRunCombatService();
-            var model = svc.GetCombatCharacterList(id).OrderBy(e => e.TotalInitiative).ThenBy(e => e.InitiativeAbilityScore).ThenBy(e => e.IsPlayer).Reverse().ToArray();
+            var model = svc.GetCombatCharacterList(id).OrderBy(e => e.TotalInitiative).ThenBy(e => e.InitiativeAbilityScore).ThenBy(e => e.IsPlayer).Reverse().ToList();
+            int turnOrder = 0;
+            foreach (var character in model)
+            {
+                character.TurnOrderNumber = turnOrder;
+                turnOrder++;
+            }
+            if (SelectedCharacter == null)
+            {
+                SelectedCharacter = 0;
+            }
+            else if (SelectedCharacter < model.Count())
+            {
+                SelectedCharacter++;
+            }
+
+            if (SelectedCharacter == model.Count())
+            {
+                SelectedCharacter = 0;
+            }
+            ViewBag.SelectedCharacter = SelectedCharacter;
             return View(model);
         }
 
         //GET: RunCombat/Attack/{id}
-        public ActionResult Attack(int id)
+        public ActionResult Attack(int id, int currentTurn)
         {
             var svc = CreateRunCombatService();
             var model = svc.GetOneCombatant(id);
+            model.CurrentTurn = currentTurn;
             return View(model);
         }
 
         //POST: RunCombat/Attack/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Attack (RunCombatCharacter model, int id)
+        public ActionResult Attack (RunCombatAttack model, int id)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -93,8 +114,8 @@ namespace DMCombatScreen.WebMVC.Controllers
 
             if (svc.UpdateCharacterHP(model))
             {
-                TempData["SaveResult"] = "Initiative Successfully Rolled";
-                return RedirectToAction("RunCombat", new { id = model.CombatID });
+                TempData["SaveResult"] = "HP updated";
+                return RedirectToAction("RunCombat", new {id = model.CombatID, SelectedCharacter = model.CurrentTurn - 1});
             }
 
             ModelState.AddModelError("", "HP could not be updated.");

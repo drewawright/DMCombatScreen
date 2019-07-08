@@ -6,10 +6,6 @@
 
 <h2>RunCombat</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <table class="table">
     <tr>
         <th>
@@ -27,24 +23,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CharacterName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalInitiative)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CurrentHP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxHP)
-        </td>
-        <td>
-            @Html.ActionLink("Attack", "Attack", new { id = item.ID})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+
+        string selectedRow = "";
+        if (item.TurnOrderNumber == ViewBag.SelectedCharacter)
+        {
+            selectedRow = "success";
+        }
+
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalInitiative)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentHP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxHP)
+            </td>
+            <td>
+                @if (!item.IsPlayer)
+                {
+                    @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
+                } |
+                @if (item.TurnOrderNumber == ViewBag.SelectedCharacter)
+                {
+                    @Html.ActionLink("End Turn", "RunCombat", new { SelectedCharacter = item.TurnOrderNumber } )
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.ActionLink("Back to Combat List", "Index")

@@ -143,7 +143,7 @@ namespace DMCombatScreen.Services
             }
         }
 
-        public RunCombatCharacter GetOneCombatant(int id)
+        public RunCombatAttack GetOneCombatant(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -152,23 +152,19 @@ namespace DMCombatScreen.Services
                     .Single(e => e.ID == id);
 
                     return 
-                        new RunCombatCharacter
+                        new RunCombatAttack
                         {
                             ID = query.ID,
                             CharacterID = query.CharacterID,
                             CharacterName = query.Character.Name,
                             CombatID = query.CombatID,
-                            CombatName = query.Combat.Name,
-                            TotalInitiative = query.CurrentInitiative,
-                            InitiativeAbilityScore = query.Character.InitiativeAbilityScore,
                             MaxHP = query.Character.MaxHP,
                             CurrentHP = query.CurrentHP,
-                            IsPlayer = query.Character.IsPlayer,
                         };
             }
         }
 
-        public bool UpdateCharacterHP(RunCombatCharacter model)
+        public bool UpdateCharacterHP(RunCombatAttack model)
         {
             using (var ctx = new ApplicationDbContext())
             {
