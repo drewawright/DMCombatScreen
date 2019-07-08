@@ -94,6 +94,7 @@ namespace DMCombatScreen.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                Random random = new Random();
                 foreach (var character in model)
                 {
                     var existing = ctx.Attendances.Find(character.ID);
@@ -103,7 +104,7 @@ namespace DMCombatScreen.Services
                     }
                     else
                     {
-                        existing.Character.InitiativeRoll = character.InitiativeEntry;
+                        existing.Character.InitiativeRoll = random.Next(1, 21);
                         existing.CurrentInitiative = existing.Character.InitiativeRoll + existing.Character.InitiativeModifier;
                         if (character.CurrentHP == null)
                         {
