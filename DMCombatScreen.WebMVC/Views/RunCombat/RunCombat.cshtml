@@ -21,6 +21,7 @@
             @Html.DisplayNameFor(model => model.MaxHP)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -45,11 +46,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MaxHP)
             </td>
-            <td>
+
                 @if (!item.IsPlayer)
                 {
-                    @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
-                } |
+                    <td>
+                        @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            <td>
                 @if (item.TurnOrderNumber == ViewBag.SelectedCharacter)
                 {
                     @Html.ActionLink("End Turn", "RunCombat", new { SelectedCharacter = item.TurnOrderNumber } )
