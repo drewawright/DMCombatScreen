@@ -17,7 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.CurrentHP)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -38,12 +37,10 @@
         {
             <td></td>
         }
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
-        </td>
     </tr>
 }
 
 </table>
+
+@Html.ActionLink("Return To Combat List", "Index") |
+@Html.ActionLink("Run Combat", "RollInitiative", new { id = Model.First().CombatID })

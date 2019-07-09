@@ -20,6 +20,14 @@
     </div>
 }
 
+@using (Html.BeginForm())
+{
+    <p>
+        Search by Character or Combat Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>

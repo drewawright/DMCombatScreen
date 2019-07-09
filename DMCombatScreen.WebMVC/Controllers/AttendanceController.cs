@@ -12,12 +12,18 @@ namespace DMCombatScreen.WebMVC.Controllers
     public class AttendanceController : Controller
     {
         // GET: Attendance/Index
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             ViewBag.CharSortParam = sortOrder == "name" ? "name_desc" : "name";
             ViewBag.CombatSortParam = String.IsNullOrEmpty(sortOrder) ? "combat_name_desc" : "";
             var svc = CreateAttendanceService();
             var model = svc.GetAttendances();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(m => m.CombatName.Contains(searchString)
+                                    || m.CharacterName.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
@@ -101,15 +107,13 @@ namespace DMCombatScreen.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMultiple(AttendanceAddCharacter model)
         {
-            //var userID = Guid.Parse(User.Identity.GetUserId());
             ViewBag.CombatID = CombatSelect(model.CombatID);
-            //ViewBag.CharacterID = new CharacterService(userID).GetAttendanceCharacterInfos();
 
             if (!ModelState.IsValid) return View(model);
 
             var svc = CreateAttendanceService();
             svc.CreateMultipleAttendances(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", "RunCombat", model.CombatID);
         }
 
         //GET: Attendance/Detail/{id}
