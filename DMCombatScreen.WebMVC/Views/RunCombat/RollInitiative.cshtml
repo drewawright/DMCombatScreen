@@ -4,7 +4,7 @@
     ViewBag.Title = "RollInitiative";
 }
 
-<h2>RollInitiative</h2>
+<h2>Roll Initiative</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -45,12 +45,17 @@
                 <td>
                     @Html.DisplayFor(model => model[i].CharacterName)
                 </td>
-
-                <td>
-                    @Html.EditorFor(model => model[i].InitiativeEntry)
-                    @Html.ValidationMessageFor(model => model[i].InitiativeEntry, "", new { @class = "text-danger" })
-                </td>
-
+                @if (Model[i].IsPlayer)
+                {
+                    <td>
+                        @Html.EditorFor(model => model[i].InitiativeEntry)
+                        @Html.ValidationMessageFor(model => model[i].InitiativeEntry, "", new { @class = "text-danger" })
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
                 @if (!Model[i].IsPlayer)
                 {
                     <td>

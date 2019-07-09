@@ -258,6 +258,7 @@
     <Content Include="Views\RunCombat\RollInitiative.cshtml" />
     <Content Include="Views\RunCombat\RunCombat.cshtml" />
     <Content Include="Views\RunCombat\Attack.cshtml" />
+    <Content Include="Views\Attendance\CreateMultiple.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

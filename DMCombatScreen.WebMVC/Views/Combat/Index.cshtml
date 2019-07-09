@@ -30,6 +30,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -43,8 +44,12 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CombatID }) |
+                @Html.ActionLink("Add Characters", "Create", "Attendance", new { id = item.CombatID }, null) |
                 @Html.ActionLink("Details", "Details", new { id = item.CombatID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.CombatID })
+            </td>
+            <td>
+                @Html.ActionLink("Run Combat", "RollInitiative", "RunCombat", new { id = item.CombatID}, null)
             </td>
         </tr>
     }

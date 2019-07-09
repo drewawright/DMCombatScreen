@@ -75,6 +75,24 @@ namespace DMCombatScreen.Services
             }
         }
 
+        public List<AttendanceCharacterInfo> GetAttendanceCharacterInfos()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Characters
+                        .Select(
+                        e => new AttendanceCharacterInfo
+                        {
+                            CharacterID = e.CharacterID,
+                            CharacterName = e.Name
+                        }
+                        );
+                return query.ToList();
+            }
+        }
+
         public bool UpdateCharacter(CharacterEdit model)
         {
             using (var ctx = new ApplicationDbContext())

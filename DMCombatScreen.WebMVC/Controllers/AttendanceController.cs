@@ -20,10 +20,18 @@ namespace DMCombatScreen.WebMVC.Controllers
         }
 
         //GET: Attendance/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id != null)
+            {
+                int selectedID = (int)id;
+                ViewBag.CombatID = CombatSelect(selectedID);
+            }
+            else
+            {
+                ViewBag.CombatID = CombatSelect();
+            }
             ViewBag.CharacterID = CharacterSelect();
-            ViewBag.CombatID = CombatSelect();
 
             return View();
         }
@@ -48,6 +56,33 @@ namespace DMCombatScreen.WebMVC.Controllers
 
             ModelState.AddModelError("", "Character could not be added to encounter.");
             return View(model);
+        }
+
+        //GET: Attendance/CreateMulti/
+        public ActionResult CreateMultiple()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.CombatID = CombatSelect();
+            var model = new AttendanceAddCharacter();
+            model.CharacterList = new CharacterService(userID).GetAttendanceCharacterInfos();
+
+            return View(model);
+        }
+
+        //POST: Attendance/CreateMulti/{attendanceAddmultiple}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateMultiple(AttendanceAddCharacter model)
+        {
+            //var userID = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.CombatID = CombatSelect(model.CombatID);
+            //ViewBag.CharacterID = new CharacterService(userID).GetAttendanceCharacterInfos();
+
+            if (!ModelState.IsValid) return View(model);
+
+            var svc = CreateAttendanceService();
+            svc.CreateMultipleAttendances(model);
+            return RedirectToAction("Index");
         }
 
         //GET: Attendance/Detail/{id}

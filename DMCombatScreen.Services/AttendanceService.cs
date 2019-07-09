@@ -34,7 +34,44 @@ namespace DMCombatScreen.Services
             }
         }
 
-       public IEnumerable<AttendanceListItem> GetAttendances()
+        public List<AttendanceCharacterInfo> AddCharacterToAttendanceList(List<AttendanceCharacterInfo> model)
+        {
+            List<AttendanceCharacterInfo> charactersToAdd = new List<AttendanceCharacterInfo>();
+            foreach (var character in model)
+            {
+                if (character.IsChecked)
+                {
+                    charactersToAdd.Add(character);
+                }
+            }
+            return charactersToAdd;
+        }
+
+        public void CreateMultipleAttendances(AttendanceAddCharacter model)
+        {
+
+            foreach (var character in model.CharacterList)
+            {
+                if (character.IsChecked)
+                {
+                    var entity =
+                        new Attendance
+                        {
+                            OwnerID = _userID,
+                            CharacterID = character.CharacterID,
+                            CombatID = model.CombatID,
+                        };
+
+                    using (var ctx = new ApplicationDbContext())
+                    {
+                        ctx.Attendances.Add(entity);
+                        ctx.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<AttendanceListItem> GetAttendances()
         {
             using (var ctx = new ApplicationDbContext())
             {

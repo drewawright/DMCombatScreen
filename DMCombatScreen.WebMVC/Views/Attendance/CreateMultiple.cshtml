@@ -1,0 +1,60 @@
+﻿@model DMCombatScreen.Models.AttendanceAddCharacter
+
+@{
+    ViewBag.Title = "CreateMultiple";
+}
+
+<h2>CreateMultiple</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AttendanceAddCharacter</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CombatName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CombatID", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CombatName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <table>
+
+                    @{
+                        for (int i = 0; i < Model.CharacterList.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(m => Model.CharacterList[i].IsChecked)
+                                    @Html.HiddenFor(m => Model.CharacterList[i].CharacterID)
+                                    @Html.HiddenFor(m => Model.CharacterList[i].CharacterName)
+                                    @Model.CharacterList[i].CharacterName
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

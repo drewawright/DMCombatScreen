@@ -53,7 +53,7 @@ namespace DMCombatScreen.WebMVC.Controllers
             if (svc.SetInitiatives(model))
             {
                 TempData["SaveResult"] = "Initiative Successfully Rolled";
-                return RedirectToAction("Index");
+                return RedirectToAction("RunCombat", new { id = id });
             }
 
             ModelState.AddModelError("", "Initiative could not be rolled");

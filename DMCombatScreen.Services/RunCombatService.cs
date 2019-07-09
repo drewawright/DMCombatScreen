@@ -115,7 +115,7 @@ namespace DMCombatScreen.Services
                 }
 
                 var actual = ctx.SaveChanges();
-                return actual == model.Count();
+                return actual > 0;
             }
         }
 
