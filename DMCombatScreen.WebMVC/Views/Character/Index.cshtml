@@ -21,25 +21,33 @@
     </div>
 }
 
+@using (Html.BeginForm())
+{
+    <p>
+        Search By Character Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CharacterID)
+        </th>*@
+        <th>
+            @Html.ActionLink("Character Name", "Index", new { sortOrder = ViewBag.NameSortParam })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsPlayer)
+            @Html.ActionLink("Is Player", "Index", new { sortOrder = ViewBag.PlayerSortParam })
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CharacterID)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>

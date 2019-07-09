@@ -12,10 +12,37 @@ namespace DMCombatScreen.WebMVC.Controllers
     public class CharacterController : Controller
     {
         // GET: Character/Index
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string sortOrder)
         {
+            ViewBag.NameSortParam = sortOrder == "name" ? "name_desc" : "name";
+            ViewBag.PlayerSortParam = sortOrder == "player" ? "player_desc" : "player";
             var service = CreateCharacterService();
             var model = service.GetCharacters();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(m => m.Name.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name":
+                    model = model.OrderBy(m => m.Name);
+                    break;
+                case "name_desc":
+                    model = model.OrderByDescending(m => m.Name);
+                    break;
+                case "player":
+                    model = model.OrderBy(m => m.IsPlayer);
+                    break;
+                case "player_desc":
+                    model = model.OrderByDescending(m => m.IsPlayer);
+                    break;
+                default:
+                    //model = model.OrderBy(m => m.CharacterID);
+                    break;
+            }
+
             return View(model);
         }
 
