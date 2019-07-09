@@ -102,7 +102,7 @@ namespace DMCombatScreen.WebMVC.Controllers
             return View(model);
         }
 
-        //POST: Attendance/CreateMulti/{attendanceAddmultiple}
+        //POST: Attendance/CreateMulti/{AttendanceAddCharacter}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateMultiple(AttendanceAddCharacter model)
