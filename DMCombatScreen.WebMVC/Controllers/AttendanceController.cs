@@ -113,7 +113,7 @@ namespace DMCombatScreen.WebMVC.Controllers
 
             var svc = CreateAttendanceService();
             svc.CreateMultipleAttendances(model);
-            return RedirectToAction("Detail", "RunCombat", model.CombatID);
+            return RedirectToAction("Detail", "RunCombat", new { id = model.CombatID });
         }
 
         //GET: Attendance/Detail/{id}
