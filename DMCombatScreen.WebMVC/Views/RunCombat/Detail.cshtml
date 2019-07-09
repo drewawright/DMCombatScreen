@@ -43,4 +43,5 @@
 </table>
 
 @Html.ActionLink("Return To Combat List", "Index") |
+@Html.ActionLink("Edit Participants", "Index", "Attendance", new { searchString = Model.First().CombatName}, null) |
 @Html.ActionLink("Run Combat", "RollInitiative", new { id = Model.First().CombatID })

@@ -84,7 +84,7 @@ namespace DMCombatScreen.WebMVC.Controllers
         }
 
         //GET: Attendance/CreateMulti/
-        public ActionResult CreateMultiple(int? id)
+        public ActionResult CreateMultiple(int? id, string sortOrder)
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
             if (id != null)
@@ -98,6 +98,19 @@ namespace DMCombatScreen.WebMVC.Controllers
             }
             var model = new AttendanceAddCharacter();
             model.CharacterList = new CharacterService(userID).GetAttendanceCharacterInfos();
+
+            ViewBag.NameSortParam = sortOrder == "name" ? "name_desc" : "name";
+            switch (sortOrder)
+            {
+                case "name":
+                    model.CharacterList = model.CharacterList.OrderBy(m => m.CharacterName).ToList();
+                    break;
+                case "name_desc":
+                    model.CharacterList = model.CharacterList.OrderByDescending(m => m.CharacterName).ToList();
+                    break;
+                default:
+                    break;
+            }
 
             return View(model);
         }

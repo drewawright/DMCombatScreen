@@ -39,7 +39,6 @@ namespace DMCombatScreen.WebMVC.Controllers
                     model = model.OrderByDescending(m => m.IsPlayer);
                     break;
                 default:
-                    //model = model.OrderBy(m => m.CharacterID);
                     break;
             }
 
