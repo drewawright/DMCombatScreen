@@ -54,18 +54,25 @@ namespace DMCombatScreen.Services
             {
                 if (character.IsChecked)
                 {
-                    var entity =
-                        new Attendance
-                        {
-                            OwnerID = _userID,
-                            CharacterID = character.CharacterID,
-                            CombatID = model.CombatID,
-                        };
-
-                    using (var ctx = new ApplicationDbContext())
+                    if (character.NumberOfAttendances == null)
                     {
-                        ctx.Attendances.Add(entity);
-                        ctx.SaveChanges();
+                        character.NumberOfAttendances = 1;
+                    }
+                    for (int i = 0; i < character.NumberOfAttendances; i++)
+                    {
+                        var entity =
+                            new Attendance
+                            {
+                                OwnerID = _userID,
+                                CharacterID = character.CharacterID,
+                                CombatID = model.CombatID,
+                            };
+
+                        using (var ctx = new ApplicationDbContext())
+                        {
+                            ctx.Attendances.Add(entity);
+                            ctx.SaveChanges();
+                        }
                     }
                 }
             }

@@ -12,10 +12,29 @@ namespace DMCombatScreen.WebMVC.Controllers
     public class AttendanceController : Controller
     {
         // GET: Attendance/Index
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
+            ViewBag.CharSortParam = sortOrder == "name" ? "name_desc" : "name";
+            ViewBag.CombatSortParam = String.IsNullOrEmpty(sortOrder) ? "combat_name_desc" : "";
             var svc = CreateAttendanceService();
             var model = svc.GetAttendances();
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    model = model.OrderByDescending(m => m.CharacterName);
+                    break;
+                case "name":
+                    model = model.OrderBy(m => m.CharacterName);
+                    break;
+                case "combat_name_desc":
+                    model = model.OrderByDescending(m => m.CombatName);
+                    break;
+                default:
+                    model = model.OrderBy(m => m.CombatName);
+                    break;
+            }
+
             return View(model);
         }
 
@@ -59,10 +78,18 @@ namespace DMCombatScreen.WebMVC.Controllers
         }
 
         //GET: Attendance/CreateMulti/
-        public ActionResult CreateMultiple()
+        public ActionResult CreateMultiple(int? id)
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            ViewBag.CombatID = CombatSelect();
+            if (id != null)
+            {
+                int combatID = (int)id;
+                ViewBag.CombatID = CombatSelect(combatID);
+            }
+            else
+            {
+                ViewBag.CombatID = CombatSelect();
+            }
             var model = new AttendanceAddCharacter();
             model.CharacterList = new CharacterService(userID).GetAttendanceCharacterInfos();
 
@@ -90,6 +117,7 @@ namespace DMCombatScreen.WebMVC.Controllers
         {
             var svc = CreateAttendanceService();
             var detail = svc.GetAttendanceByID(id);
+            TempData["SaveResult"] = "Characters Successfully Added to Encounter";
             return View(detail);
         }
 

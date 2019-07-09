@@ -23,13 +23,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
+            @Html.ActionLink("Character Name", "Index", new { sortOrder = ViewBag.CharSortParam })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CharacterName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CombatName)
+            @Html.ActionLink("Combat Name", "Index", new { sortOrder = ViewBag.CombatSortParam})
         </th>
         <th></th>
     </tr>
@@ -37,9 +34,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CharacterName)
             </td>

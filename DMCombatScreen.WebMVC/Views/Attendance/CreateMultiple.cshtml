@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateMultiple";
 }
 
-<h2>CreateMultiple</h2>
+<h2>Add Characters To An Encounter</h2>
 
 @using (Html.BeginForm())
 {
@@ -24,17 +24,27 @@
 
         <div class="form-group">
             <div class="col-md-10">
-                <table>
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th> Character Name</th>
+                        <th>Number to add</th>
+                    </tr>
 
                     @{
                         for (int i = 0; i < Model.CharacterList.Count(); i++)
                         {
+                            @Html.HiddenFor(m => Model.CharacterList[i].CharacterID)
+                            @Html.HiddenFor(m => Model.CharacterList[i].CharacterName)
                             <tr>
                                 <td>
                                     @Html.CheckBoxFor(m => Model.CharacterList[i].IsChecked)
-                                    @Html.HiddenFor(m => Model.CharacterList[i].CharacterID)
-                                    @Html.HiddenFor(m => Model.CharacterList[i].CharacterName)
+                                </td>
+                                <td>
                                     @Model.CharacterList[i].CharacterName
+                                </td>
+                                <td>
+                                    @Html.EditorFor(m => Model.CharacterList[i].NumberOfAttendances)
                                 </td>
                             </tr>
                         }
