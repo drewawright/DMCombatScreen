@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DMCombatScreen.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,5 +20,6 @@ namespace DMCombatScreen.Models
         public int? CurrentHP { get; set; }
         public int? MaxHP { get; set; }
         public int TurnOrderNumber { get; set; }
+        public List<Condition> Conditions { get; set; }
     }
 }

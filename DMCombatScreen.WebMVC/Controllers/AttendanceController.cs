@@ -132,9 +132,11 @@ namespace DMCombatScreen.WebMVC.Controllers
         //POST: Attendance/CreateMulti/{AttendanceAddCharacter}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateMultiple(AttendanceAddCharacter model)
+        public ActionResult CreateMultiple(AttendanceAddCharacter model, int? CharType)
         {
             ViewBag.CombatID = CombatSelect(model.CombatID);
+            ViewBag.CharType = CharTypeSelect();
+            int charTypeID = CharType.GetValueOrDefault();
 
             if (!ModelState.IsValid) return View(model);
 

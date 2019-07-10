@@ -139,6 +139,7 @@ namespace DMCombatScreen.Services
                                 MaxHP = e.Character.MaxHP,
                                 CurrentHP = e.CurrentHP,
                                 IsPlayer = e.Character.IsPlayer,
+                                Conditions = e.Conditions
                             });
                 return query.ToList();
             }

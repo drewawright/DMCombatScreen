@@ -14,7 +14,7 @@
     </p>
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateMultiple", "Attendance", FormMethod.Post, new { id = Model.CombatID }))
 {
     @Html.AntiForgeryToken()
 
@@ -48,7 +48,7 @@
                             @Html.HiddenFor(m => Model.CharacterList[i].CharacterTypeValue)
                             <tr>
                                 <td>
-                                    @Html.CheckBoxFor(m => Model.CharacterList[i].IsChecked, htmlAttributes: new { id = Model.CharacterList[i].CharacterID, value = Model.CharacterList[i].CharacterID })
+                                    @Html.CheckBoxFor(m => Model.CharacterList[i].IsChecked, htmlAttributes: new { @class = Model.CharacterList[i].CharacterID })
                                 </td>
                                 <td>
                                     @Html.LabelFor(m => Model.CharacterList[i].IsChecked, Model.CharacterList[i].CharacterName)
@@ -86,7 +86,7 @@
 
         $checkboxes.on("change", function () {
             $checkboxes.each(function () {
-                checkboxValues[this.value] = this.checked;
+                checkboxValues[this.class] = this.checked;
             });
 
             localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
@@ -94,7 +94,7 @@
 
         // On page load
         $.each(checkboxValues, function (key, value) {
-            $("#" + key).prop('checked', value);
+            $("." + key).prop('checked', value);
         });
     </script>
 }
