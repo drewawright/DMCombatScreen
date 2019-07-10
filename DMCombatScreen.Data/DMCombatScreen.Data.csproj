@@ -86,6 +86,14 @@
     <Compile Include="Migrations\201907101311266_addedCharType.Designer.cs">
       <DependentUpon>201907101311266_addedCharType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907101952522_changedConditionsName.cs" />
+    <Compile Include="Migrations\201907101952522_changedConditionsName.Designer.cs">
+      <DependentUpon>201907101952522_changedConditionsName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907102002117_removedAttendanceConditions.cs" />
+    <Compile Include="Migrations\201907102002117_removedAttendanceConditions.Designer.cs">
+      <DependentUpon>201907102002117_removedAttendanceConditions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907101311266_addedCharType.resx">
       <DependentUpon>201907101311266_addedCharType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907101952522_changedConditionsName.resx">
+      <DependentUpon>201907101952522_changedConditionsName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907102002117_removedAttendanceConditions.resx">
+      <DependentUpon>201907102002117_removedAttendanceConditions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

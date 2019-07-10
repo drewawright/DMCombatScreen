@@ -47,20 +47,20 @@
                 @Html.DisplayFor(modelItem => item.MaxHP)
             </td>
 
-                @if (!item.IsPlayer)
-                {
-                    <td>
-                        @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
-                    </td>
-                }
-                else
-                {
-                    <td></td>
-                }
+            @if (!item.IsPlayer)
+            {
+                <td>
+                    @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
+                </td>
+            }
+            else
+            {
+                <td></td>
+            }
             <td>
                 @if (item.TurnOrderNumber == ViewBag.SelectedCharacter)
                 {
-                    @Html.ActionLink("End Turn", "RunCombat", new { SelectedCharacter = item.TurnOrderNumber } )
+                    @Html.ActionLink("End Turn", "RunCombat", new { SelectedCharacter = item.TurnOrderNumber })
                 }
             </td>
         </tr>

@@ -40,6 +40,5 @@ namespace DMCombatScreen.Data
         [Display(Name = "Current HP")]
         public int? CurrentHP { get; set; }
         public int? CurrentInitiative { get; set; }
-        public List<Condition> Conditions { get; set; }
     }
 }
