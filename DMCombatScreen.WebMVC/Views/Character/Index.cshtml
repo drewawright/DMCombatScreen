@@ -38,6 +38,9 @@
             @Html.ActionLink("Character Name", "Index", new { sortOrder = ViewBag.NameSortParam })
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CharacterType)
+        </th>
+        <th>
             @Html.ActionLink("Is Player", "Index", new { sortOrder = ViewBag.PlayerSortParam })
         </th>
         <th></th>
@@ -50,6 +53,9 @@
         </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CharacterType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsPlayer)

@@ -89,11 +89,14 @@ namespace DMCombatScreen.WebMVC.Controllers
 
                 {
                     CharacterID = detail.CharacterID,
+                    Name = detail.Name,
                     MaxHP = detail.MaxHP,
                     InitiativeModifier = detail.InitiativeModifier,
                     InitiativeAbilityScore = detail.InitiativeAbilityScore,
-                    IsPlayer = detail.IsPlayer
+                    IsPlayer = detail.IsPlayer,
+                    CharacterType = detail.CharacterType
                 };
+            ViewBag.CharType = model.CharacterType;
             return View(model);
         }
 

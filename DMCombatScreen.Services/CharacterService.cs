@@ -19,6 +19,11 @@ namespace DMCombatScreen.Services
 
         public bool CreateCharacter(CharacterCreate model)
         {
+            CharacterType charType;
+            if (Enum.TryParse(model.CharacterType, out charType))
+                {
+                Enum.Parse(typeof(CharacterType), model.CharacterType);
+                }
             var entity =
                 new Character()
                 {
@@ -27,6 +32,7 @@ namespace DMCombatScreen.Services
                     MaxHP = model.MaxHP,
                     InitiativeAbilityScore = model.InitiativeAbilityScore,
                     InitiativeModifier = model.InitiativeModifier,
+                    TypeOfCharacter = charType,
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,6 +54,7 @@ namespace DMCombatScreen.Services
                             CharacterID = e.CharacterID,
                             Name = e.Name,
                             IsPlayer = e.IsPlayer,
+                            CharacterType = e.TypeOfCharacter.ToString()
                         }
                         );
                 return query.ToArray();
@@ -70,7 +77,8 @@ namespace DMCombatScreen.Services
                         MaxHP = entity.MaxHP,
                         InitiativeModifier = entity.InitiativeModifier,
                         InitiativeAbilityScore = entity.InitiativeAbilityScore,
-                        IsPlayer = entity.IsPlayer
+                        IsPlayer = entity.IsPlayer,
+                        CharacterType = entity.TypeOfCharacter.ToString()
                     };
             }
         }
@@ -95,6 +103,12 @@ namespace DMCombatScreen.Services
 
         public bool UpdateCharacter(CharacterEdit model)
         {
+            CharacterType charType;
+            if (Enum.TryParse(model.CharacterType, out charType))
+            {
+                Enum.Parse(typeof(CharacterType), model.CharacterType);
+            }
+
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
@@ -107,6 +121,7 @@ namespace DMCombatScreen.Services
                 entity.InitiativeModifier = model.InitiativeModifier;
                 entity.InitiativeAbilityScore = model.InitiativeAbilityScore;
                 entity.IsPlayer = model.IsPlayer;
+                entity.TypeOfCharacter = charType;
 
                 return ctx.SaveChanges() == 1;
             }

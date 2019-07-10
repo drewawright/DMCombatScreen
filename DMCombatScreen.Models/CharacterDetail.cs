@@ -20,5 +20,7 @@ namespace DMCombatScreen.Models
         public int? InitiativeAbilityScore { get; set; }
         [Display(Name = "Is a Player?")]
         public bool IsPlayer { get; set; }
+        [Display(Name = "Character Type")]
+        public string CharacterType { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DMCombatScreen.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,5 +22,8 @@ namespace DMCombatScreen.Models
         public int? InitiativeAbilityScore { get; set; }
         [Display(Name = "Check if Player Character")]
         public bool IsPlayer { get; set; }
+        [Required]
+        [Display(Name = "Character Type")]
+        public string CharacterType { get; set; }
     }
 }
