@@ -96,7 +96,9 @@ namespace DMCombatScreen.Services
                         e => new AttendanceCharacterInfo
                         {
                             CharacterID = e.CharacterID,
-                            CharacterName = e.Name
+                            CharacterName = e.Name,
+                            CharacterTypeName = e.TypeOfCharacter.ToString(),
+                            CharacterTypeValue = (int)e.TypeOfCharacter
                         }
                         );
                 return query.ToList();

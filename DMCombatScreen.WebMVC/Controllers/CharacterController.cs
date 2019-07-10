@@ -24,7 +24,6 @@ namespace DMCombatScreen.WebMVC.Controllers
             var service = CreateCharacterService();
             var model = service.GetCharacters().AsQueryable()
                     .Where(m => !CharType.HasValue || m.CharacterTypeValue == charTypeID);
-            //var model = service.GetCharacters();
 
             if (!String.IsNullOrEmpty(searchString))
             {

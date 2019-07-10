@@ -1,4 +1,5 @@
-﻿using DMCombatScreen.Models;
+﻿using DMCombatScreen.Data;
+using DMCombatScreen.Models;
 using DMCombatScreen.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -17,6 +18,7 @@ namespace DMCombatScreen.WebMVC.Controllers
             ViewBag.CharSortParam = sortOrder == "name" ? "name_desc" : "name";
             ViewBag.CombatSortParam = String.IsNullOrEmpty(sortOrder) ? "combat_name_desc" : "";
             var svc = CreateAttendanceService();
+
             var model = svc.GetAttendances();
 
             if (!String.IsNullOrEmpty(searchString))
@@ -84,8 +86,11 @@ namespace DMCombatScreen.WebMVC.Controllers
         }
 
         //GET: Attendance/CreateMulti/
-        public ActionResult CreateMultiple(int? id, string sortOrder)
+        public ActionResult CreateMultiple(int? id, string sortOrder, int? CharType)
         {
+            ViewBag.CharType = CharTypeSelect();
+            int charTypeID = CharType.GetValueOrDefault();
+
             var userID = Guid.Parse(User.Identity.GetUserId());
             if (id != null)
             {
@@ -96,10 +101,13 @@ namespace DMCombatScreen.WebMVC.Controllers
             {
                 ViewBag.CombatID = CombatSelect();
             }
+
             var model = new AttendanceAddCharacter();
-            model.CharacterList = new CharacterService(userID).GetAttendanceCharacterInfos();
+            model.CharacterList = new CharacterService(userID).GetAttendanceCharacterInfos()
+                .Where(m => !CharType.HasValue || m.CharacterTypeValue == charTypeID).ToList();
 
             ViewBag.NameSortParam = sortOrder == "name" ? "name_desc" : "name";
+            ViewBag.TypeSortParam = sortOrder == "type" ? "type_desc" : "type";
             switch (sortOrder)
             {
                 case "name":
@@ -107,6 +115,12 @@ namespace DMCombatScreen.WebMVC.Controllers
                     break;
                 case "name_desc":
                     model.CharacterList = model.CharacterList.OrderByDescending(m => m.CharacterName).ToList();
+                    break;
+                case "type":
+                    model.CharacterList = model.CharacterList.OrderBy(m => m.CharacterTypeName).ToList();
+                    break;
+                case "type_desc":
+                    model.CharacterList = model.CharacterList.OrderByDescending(m => m.CharacterTypeName).ToList();
                     break;
                 default:
                     break;
@@ -236,6 +250,17 @@ namespace DMCombatScreen.WebMVC.Controllers
             var userID = Guid.Parse(User.Identity.GetUserId());
             var characters = new CombatService(userID).GetCombats().ToList();
             return new SelectList(characters, "CombatID", "Name", selectedID);
+        }
+
+        private SelectList CharTypeSelect()
+        {
+            var charTypes = from CharacterType c in Enum.GetValues(typeof(CharacterType))
+                            select new
+                            {
+                                ID = (int)c,
+                                Name = c.ToString(),
+                            };
+            return new SelectList(charTypes, "ID", "Name");
         }
 
         private AttendanceService CreateAttendanceService()

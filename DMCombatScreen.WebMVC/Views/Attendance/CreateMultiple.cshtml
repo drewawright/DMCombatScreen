@@ -6,6 +6,14 @@
 
 <h2>Add Characters To An Encounter</h2>
 
+@using (Html.BeginForm("CreateMultiple", "Attendance", FormMethod.Get, new { id = Model.CombatID }))
+{
+    <p>
+        Filter By Category: @Html.DropDownList("CharType", "All")
+        <input type="submit" value="Filter" />
+    </p>
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -24,10 +32,11 @@
 
         <div class="form-group">
             <div class="col-md-10">
-                <table class="table" id = "checkbox-container">
+                <table class="table" id="checkbox-container">
                     <tr>
                         <th></th>
                         <th>@Html.ActionLink("Character Name", "CreateMultiple", new { sortOrder = ViewBag.NameSortParam })</th>
+                        <th>@Html.ActionLink("Character Type", "CreateMultiple", new { sortOrder = ViewBag.TypeSortParam })</th>
                         <th>Number to add</th>
                     </tr>
 
@@ -36,12 +45,16 @@
                         {
                             @Html.HiddenFor(m => Model.CharacterList[i].CharacterID)
                             @Html.HiddenFor(m => Model.CharacterList[i].CharacterName)
+                            @Html.HiddenFor(m => Model.CharacterList[i].CharacterTypeValue)
                             <tr>
                                 <td>
                                     @Html.CheckBoxFor(m => Model.CharacterList[i].IsChecked, htmlAttributes: new { id = Model.CharacterList[i].CharacterID, value = Model.CharacterList[i].CharacterID })
                                 </td>
                                 <td>
                                     @Html.LabelFor(m => Model.CharacterList[i].IsChecked, Model.CharacterList[i].CharacterName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => Model.CharacterList[i].CharacterTypeName)
                                 </td>
                                 <td>
                                     @Html.EditorFor(m => Model.CharacterList[i].NumberOfAttendances)

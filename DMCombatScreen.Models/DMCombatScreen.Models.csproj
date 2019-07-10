@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttendanceAddCharacter.cs" />
-    <Compile Include="AttendanceAddCharactersFiltersVM.cs" />
     <Compile Include="AttendanceCharacterInfo.cs" />
     <Compile Include="AttendanceCreate.cs" />
     <Compile Include="AttendanceDetail.cs" />
