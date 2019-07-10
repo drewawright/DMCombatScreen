@@ -7,6 +7,25 @@ using System.Threading.Tasks;
 
 namespace DMCombatScreen.Data
 {
+    public enum CharacterType
+    {
+        Abberation = 1,
+        Beast,
+        Celestial,
+        Construct,
+        Dragon,
+        Elemental,
+        Fey,
+        Fiend,
+        Giant,
+        Humanoid,
+        Monstrosity,
+        Ooze,
+        Plant,
+        Undead,
+        Other
+    }
+
     public class Character
     {
         [Key]
@@ -23,6 +42,7 @@ namespace DMCombatScreen.Data
         public int? InitiativeModifier { get; set; }
         [Display(Name = "Initiative Ability Score")]
         public int? InitiativeAbilityScore { get; set; }
+        public CharacterType TypeOfCharacter { get; set; }
         [Required]
         [Display(Name = "Player?")]
         public bool IsPlayer { get; set; }

@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201907031510596_movedTotalInitiativeFromCharacterToAttendance.Designer.cs">
       <DependentUpon>201907031510596_movedTotalInitiativeFromCharacterToAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907101311266_addedCharType.cs" />
+    <Compile Include="Migrations\201907101311266_addedCharType.Designer.cs">
+      <DependentUpon>201907101311266_addedCharType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907031510596_movedTotalInitiativeFromCharacterToAttendance.resx">
       <DependentUpon>201907031510596_movedTotalInitiativeFromCharacterToAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907101311266_addedCharType.resx">
+      <DependentUpon>201907101311266_addedCharType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
