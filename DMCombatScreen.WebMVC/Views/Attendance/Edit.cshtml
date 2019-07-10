@@ -30,16 +30,7 @@
                 @Html.ValidationMessageFor(model => model.CombatName, "", new { @class = "text-danger" })
             </div>
         </div>
-    @*@if(Model.CurrentHP != null)
-    {
-        <div class="form-group">
-            @Html.LabelFor(model => model.CurrentHP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CurrentHP, "", new { @class = "control-label col-md-2" })
-                @Html.ValidationMessageFor(model => model.CurrentHP, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    }*@
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Update" class="btn btn-default" />

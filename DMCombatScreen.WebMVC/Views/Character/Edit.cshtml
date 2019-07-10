@@ -6,11 +6,6 @@
 
 <h2>Edit Character</h2>
 
-    @{
-        string charType = ViewBag.CharType;
-        var value = (DMCombatScreen.Data.CharacterType)Enum.Parse(typeof(DMCombatScreen.Data.CharacterType), charType);
-    }
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -56,11 +51,10 @@
     <div class="form-group">
         @Html.LabelFor(model => model.CharacterType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CharacterType, EnumHelper.GetSelectList(typeof(DMCombatScreen.Data.CharacterType), value), htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownList("CharType", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.CharacterType, "", new { @class = "text-danger" })
         </div>
     </div>
-
 
     <div class="form-group">
         @Html.LabelFor(model => model.IsPlayer, htmlAttributes: new { @class = "control-label col-md-2" })

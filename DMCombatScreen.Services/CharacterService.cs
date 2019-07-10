@@ -78,6 +78,7 @@ namespace DMCombatScreen.Services
                         InitiativeModifier = entity.InitiativeModifier,
                         InitiativeAbilityScore = entity.InitiativeAbilityScore,
                         IsPlayer = entity.IsPlayer,
+                        CharacterTypeValue = (int)entity.TypeOfCharacter,
                         CharacterType = entity.TypeOfCharacter.ToString()
                     };
             }

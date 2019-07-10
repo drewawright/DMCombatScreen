@@ -1,4 +1,5 @@
-﻿using DMCombatScreen.Models;
+﻿using DMCombatScreen.Data;
+using DMCombatScreen.Models;
 using DMCombatScreen.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -16,6 +17,7 @@ namespace DMCombatScreen.WebMVC.Controllers
         {
             ViewBag.NameSortParam = sortOrder == "name" ? "name_desc" : "name";
             ViewBag.PlayerSortParam = sortOrder == "player" ? "player_desc" : "player";
+            ViewBag.TypeSortParam = sortOrder == "type" ? "type_desc" : "type";
             var service = CreateCharacterService();
             var model = service.GetCharacters();
 
@@ -37,6 +39,12 @@ namespace DMCombatScreen.WebMVC.Controllers
                     break;
                 case "player_desc":
                     model = model.OrderByDescending(m => m.IsPlayer);
+                    break;
+                case "type":
+                    model = model.OrderBy(m => m.CharacterType);
+                    break;
+                case "type_desc":
+                    model = model.OrderByDescending(m => m.CharacterType);
                     break;
                 default:
                     break;
@@ -94,9 +102,16 @@ namespace DMCombatScreen.WebMVC.Controllers
                     InitiativeModifier = detail.InitiativeModifier,
                     InitiativeAbilityScore = detail.InitiativeAbilityScore,
                     IsPlayer = detail.IsPlayer,
+                    CharacterTypeValue = detail.CharacterTypeValue,
                     CharacterType = detail.CharacterType
                 };
-            ViewBag.CharType = model.CharacterType;
+            var charTypes = from CharacterType c in Enum.GetValues(typeof(CharacterType))
+                            select new
+                            {
+                                ID = (int)c,
+                                Name = c.ToString(),
+                            };
+            ViewBag.CharType = new SelectList(charTypes, "ID", "Name", model.CharacterTypeValue);
             return View(model);
         }
 
@@ -149,6 +164,16 @@ namespace DMCombatScreen.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //private IEnumerable<> CharTypeSelect()
+        //{
+        //    var charTypes = from CharacterType c in Enum.GetValues(typeof(CharacterType))
+        //                    select new
+        //                    {
+        //                        ID = (int)c,
+        //                        Name = c.ToString(),
+        //                    };
+        //}
 
         private CharacterService CreateCharacterService()
         {
