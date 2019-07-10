@@ -13,18 +13,24 @@ namespace DMCombatScreen.WebMVC.Controllers
     public class CharacterController : Controller
     {
         // GET: Character/Index
-        public ActionResult Index(string searchString, string sortOrder)
+        public ActionResult Index(string searchString, string sortOrder, int? CharType)
         {
             ViewBag.NameSortParam = sortOrder == "name" ? "name_desc" : "name";
             ViewBag.PlayerSortParam = sortOrder == "player" ? "player_desc" : "player";
             ViewBag.TypeSortParam = sortOrder == "type" ? "type_desc" : "type";
+            ViewBag.CharType = CharTypeSelect();
+            int charTypeID = CharType.GetValueOrDefault();
+            
             var service = CreateCharacterService();
-            var model = service.GetCharacters();
+            var model = service.GetCharacters().AsQueryable()
+                    .Where(m => !CharType.HasValue || m.CharacterTypeValue == charTypeID);
+            //var model = service.GetCharacters();
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 model = model.Where(m => m.Name.Contains(searchString));
             }
+
 
             switch (sortOrder)
             {
@@ -105,13 +111,7 @@ namespace DMCombatScreen.WebMVC.Controllers
                     CharacterTypeValue = detail.CharacterTypeValue,
                     CharacterType = detail.CharacterType
                 };
-            var charTypes = from CharacterType c in Enum.GetValues(typeof(CharacterType))
-                            select new
-                            {
-                                ID = (int)c,
-                                Name = c.ToString(),
-                            };
-            ViewBag.CharType = new SelectList(charTypes, "ID", "Name", model.CharacterTypeValue);
+            ViewBag.CharType = CharTypeSelect(model.CharacterTypeValue);
             return View(model);
         }
 
@@ -165,15 +165,27 @@ namespace DMCombatScreen.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        //private IEnumerable<> CharTypeSelect()
-        //{
-        //    var charTypes = from CharacterType c in Enum.GetValues(typeof(CharacterType))
-        //                    select new
-        //                    {
-        //                        ID = (int)c,
-        //                        Name = c.ToString(),
-        //                    };
-        //}
+        private SelectList CharTypeSelect()
+        {
+            var charTypes = from CharacterType c in Enum.GetValues(typeof(CharacterType))
+                            select new
+                            {
+                                ID = (int)c,
+                                Name = c.ToString(),
+                            };
+            return new SelectList(charTypes, "ID", "Name");
+        }
+
+        private SelectList CharTypeSelect(int typeID)
+        {
+            var charTypes = from CharacterType c in Enum.GetValues(typeof(CharacterType))
+                            select new
+                            {
+                                ID = (int)c,
+                                Name = c.ToString(),
+                            };
+            return new SelectList(charTypes, "ID", "Name", typeID);
+        }
 
         private CharacterService CreateCharacterService()
         {

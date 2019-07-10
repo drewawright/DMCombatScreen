@@ -12,6 +12,7 @@ namespace DMCombatScreen.Models
         public int CharacterID { get; set; }
         [Display(Name = "Character Name")]
         public string Name { get; set; }
+        public int CharacterTypeValue { get; set; }
         [Display(Name = "Character Type")]
         public string CharacterType { get; set; }
         public bool IsPlayer { get; set; }

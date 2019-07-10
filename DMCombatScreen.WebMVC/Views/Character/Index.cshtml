@@ -27,6 +27,10 @@
         Search By Character Name: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
+    <p>
+        Filter By Category: @Html.DropDownList("CharType", "All")
+        <input type="submit" value="Filter" />
+    </p>
 }
 
 <table class="table">

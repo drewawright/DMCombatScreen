@@ -54,6 +54,7 @@ namespace DMCombatScreen.Services
                             CharacterID = e.CharacterID,
                             Name = e.Name,
                             IsPlayer = e.IsPlayer,
+                            CharacterTypeValue = (int)e.TypeOfCharacter,
                             CharacterType = e.TypeOfCharacter.ToString()
                         }
                         );
