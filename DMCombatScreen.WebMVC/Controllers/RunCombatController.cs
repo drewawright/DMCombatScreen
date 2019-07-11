@@ -137,6 +137,7 @@ namespace DMCombatScreen.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditCondition(int id, string[] selectedConditions, RunCombatEditCondition model)
         {
+            PopulateAssignedConditions(model);
             if (!ModelState.IsValid) return View(model);
             
             if (model.ID != id)
@@ -169,17 +170,26 @@ namespace DMCombatScreen.WebMVC.Controllers
             var userID = Guid.Parse(User.Identity.GetUserId());
             var service = new ConditionService(userID);
             var allConditions = service.GetConditionList();
+
+            if (model.ConditionIDs == null)
+            {
+                model.ConditionIDs = new List<int>();
+            }
             var characterConditions = new HashSet<int>(model.ConditionIDs);
             var viewModel = new List<RunCombatAssignedCondition>();
-            foreach (var condition in allConditions)
+            if (allConditions != null)
             {
-                viewModel.Add(new RunCombatAssignedCondition
+                foreach (var condition in allConditions)
                 {
-                    ConditionID = condition.ConditionID,
-                    ConditionName = condition.ConditionName,
-                    IsAssigned = characterConditions.Contains(condition.ConditionID)
-                });
+                    viewModel.Add(new RunCombatAssignedCondition
+                    {
+                        ConditionID = condition.ConditionID,
+                        ConditionName = condition.ConditionName,
+                        IsAssigned = characterConditions.Contains(condition.ConditionID)
+                    });
+                }
             }
+           
             ViewBag.Conditions = viewModel;
         }
     }

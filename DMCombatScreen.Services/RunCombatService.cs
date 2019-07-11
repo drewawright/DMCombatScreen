@@ -142,16 +142,14 @@ namespace DMCombatScreen.Services
                                 Conditions = new string[0] { }.ToList()
                             });
 
-                foreach(var character in query)
+                List<RunCombatCharacter> characterCheck = query.ToList();
+
+                foreach (var character in characterCheck)
                 {
                     List<string> conditionsList = GetCharacterConditionNames(character);
-                    foreach(var condition in conditionsList.ToList())
-                    {
-                        character.Conditions.Add(condition);
-                    }
                 }
 
-                return query.ToList();
+                return characterCheck;
             }
         }
 
@@ -222,7 +220,13 @@ namespace DMCombatScreen.Services
         public void UpdateCharacterConditions(string[] selectedConditions, RunCombatEditCondition model)
         {
             //Update conditions on the model based on checkboxes
-            if (selectedConditions == null || model.ConditionIDs == null)
+            if (selectedConditions == null)
+            {
+                selectedConditions = new string[0] { };
+                model.ConditionIDs = new List<int>();
+            }
+
+            if (model.ConditionIDs == null)
             {
                 model.ConditionIDs = new List<int>();
             }
@@ -260,19 +264,39 @@ namespace DMCombatScreen.Services
                 var attendance = ctx
                     .Attendances
                     .Where(e => e.ID == model.ID)
+                    .Include(e => e.Conditions)
                     .Single();
 
-                foreach(var conditionID in model.ConditionIDs)
+                var newConditions = new HashSet<int>(model.ConditionIDs);
+                var oldConditions = new HashSet<int>();
+
+                foreach (var condition in attendance.Conditions)
                 {
-                    var condition =
-                        ctx
-                            .Conditions
-                            .Where(e => e.ConditionID == conditionID)
-                            .Single();
-                    attendance.Conditions.Add(condition);
+                    oldConditions.Add(condition.ConditionID);
                 }
 
-                return ctx.SaveChanges() >= 1;
+                var conditions = ctx.Conditions;
+                foreach(var condition in conditions)
+                {
+                    if (newConditions.Contains(condition.ConditionID))
+                    {
+                        if (!oldConditions.Contains(condition.ConditionID))
+                        {
+                            attendance.Conditions.Add(condition);
+                        }
+                    }
+                    else
+                    {
+                        if (oldConditions.Contains(condition.ConditionID))
+                        {
+                            attendance.Conditions.Remove(condition);
+                        }
+                    }
+                }
+
+                var actual = ctx.SaveChanges();
+
+                return actual >= 1;
             }
         }
 
