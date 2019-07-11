@@ -57,6 +57,7 @@
     <Compile Include="Attendance.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Combat.cs" />
+    <Compile Include="Condition.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\201907011526317_InitialCreate.cs" />
     <Compile Include="Migrations\201907011526317_InitialCreate.Designer.cs">
@@ -94,6 +95,10 @@
     <Compile Include="Migrations\201907102002117_removedAttendanceConditions.Designer.cs">
       <DependentUpon>201907102002117_removedAttendanceConditions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907102058133_addConditionTable.cs" />
+    <Compile Include="Migrations\201907102058133_addConditionTable.Designer.cs">
+      <DependentUpon>201907102058133_addConditionTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -128,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907102002117_removedAttendanceConditions.resx">
       <DependentUpon>201907102002117_removedAttendanceConditions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907102058133_addConditionTable.resx">
+      <DependentUpon>201907102058133_addConditionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

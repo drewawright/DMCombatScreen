@@ -8,24 +8,6 @@ using System.Threading.Tasks;
 
 namespace DMCombatScreen.Data
 {
-    public enum Condition
-    {
-        Blinded = 1,
-        Charmed,
-        Deafened,
-        Fatigued,
-        Frightened,
-        Grappled,
-        Incapacitated,
-        Invisible,
-        Paralyzed,
-        Petrified,
-        Poisoned,
-        Prone,
-        Restrained,
-        Stunned,
-        Unconscious
-    }
 
     public class Attendance
     {
@@ -40,5 +22,7 @@ namespace DMCombatScreen.Data
         [Display(Name = "Current HP")]
         public int? CurrentHP { get; set; }
         public int? CurrentInitiative { get; set; }
+
+        public virtual ICollection<Condition> Conditions { get; set; }
     }
 }

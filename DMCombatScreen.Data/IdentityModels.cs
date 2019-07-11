@@ -35,12 +35,19 @@ namespace DMCombatScreen.Data
         public DbSet<Character> Characters { get; set; }
         public DbSet<Combat> Combats { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Condition> Conditions { get; set; }
  
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Attendance>()
+                .HasMany(c => c.Conditions).WithMany(a => a.Attendances)
+                .Map(t => t.MapLeftKey("AttendanceID")
+                .MapRightKey("ConditionID")
+                .ToTable("AttendanceCondition"));
 
             modelBuilder
                 .Configurations

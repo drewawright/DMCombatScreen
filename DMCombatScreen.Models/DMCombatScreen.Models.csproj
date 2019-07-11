@@ -56,6 +56,8 @@
     <Compile Include="CombatDetail.cs" />
     <Compile Include="CombatEdit.cs" />
     <Compile Include="CombatListItem.cs" />
+    <Compile Include="ConditionCreate.cs" />
+    <Compile Include="ConditionListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunCombatAttack.cs" />
     <Compile Include="RunCombatCharacter.cs" />
