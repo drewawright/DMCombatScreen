@@ -132,6 +132,31 @@ namespace DMCombatScreen.WebMVC.Controllers
             return View(model);
         }
 
+        //POST: RunCombat/EditCondition/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCondition(int id, string[] selectedConditions, RunCombatEditCondition model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            
+            if (model.ID != id)
+            {
+                ModelState.AddModelError("", "ID does not match");
+                return View(model);
+            }
+
+            var svc = CreateRunCombatService();
+            svc.UpdateCharacterConditions(selectedConditions, model);
+            if (svc.UpdateAttendanceConditions(model))
+            {
+                TempData["SaveResult"] = "Conditions Updated";
+                return RedirectToAction("RunCombat", new { id = model.CombatID, SelectedCharacter = model.CurrentTurn - 1 });
+            }
+
+            ModelState.AddModelError("", "Conditions could not be updated");
+            return View(model);
+        }
+
         private RunCombatService CreateRunCombatService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());

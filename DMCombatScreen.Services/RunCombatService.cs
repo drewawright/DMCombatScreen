@@ -142,6 +142,15 @@ namespace DMCombatScreen.Services
                                 Conditions = new string[0] { }.ToList()
                             });
 
+                foreach(var character in query)
+                {
+                    List<string> conditionsList = GetCharacterConditionNames(character);
+                    foreach(var condition in conditionsList.ToList())
+                    {
+                        character.Conditions.Add(condition);
+                    }
+                }
+
                 return query.ToList();
             }
         }
@@ -209,6 +218,79 @@ namespace DMCombatScreen.Services
             }
 
         }
+
+        public void UpdateCharacterConditions(string[] selectedConditions, RunCombatEditCondition model)
+        {
+            //Update conditions on the model based on checkboxes
+            if (selectedConditions == null || model.ConditionIDs == null)
+            {
+                model.ConditionIDs = new List<int>();
+            }
+
+            var selectedConditionsHS = new HashSet<string>(selectedConditions);
+            var characterConditions = new HashSet<int>(model.ConditionIDs);
+            using (var ctx = new ApplicationDbContext())
+            {
+                var conditions = ctx.Conditions;
+                foreach(var condition in conditions)
+                {
+                    if (selectedConditionsHS.Contains(condition.ConditionID.ToString()))
+                    {
+                        if (!characterConditions.Contains(condition.ConditionID))
+                        {
+                            model.ConditionIDs.Add(condition.ConditionID);
+                        }
+                    }
+                    else
+                    {
+                        if (characterConditions.Contains(condition.ConditionID))
+                        {
+                            model.ConditionIDs.Remove(condition.ConditionID);
+                        }
+                    }
+                }
+            }
+        }
         
+        public bool UpdateAttendanceConditions(RunCombatEditCondition model)
+        {
+            //Change attendances in db based on model
+            using(var ctx = new ApplicationDbContext())
+            {
+                var attendance = ctx
+                    .Attendances
+                    .Where(e => e.ID == model.ID)
+                    .Single();
+
+                foreach(var conditionID in model.ConditionIDs)
+                {
+                    var condition =
+                        ctx
+                            .Conditions
+                            .Where(e => e.ConditionID == conditionID)
+                            .Single();
+                    attendance.Conditions.Add(condition);
+                }
+
+                return ctx.SaveChanges() >= 1;
+            }
+        }
+
+        private List<string> GetCharacterConditionNames(RunCombatCharacter model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var attendance =
+                    ctx
+                        .Attendances
+                        .Where(e => e.ID == model.ID)
+                        .Single();
+                foreach(var condition in attendance.Conditions)
+                {
+                    model.Conditions.Add(condition.ConditionName);
+                }
+            }
+            return model.Conditions;
+        }
     }
 }
