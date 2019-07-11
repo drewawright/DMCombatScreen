@@ -263,6 +263,8 @@
     <Content Include="Views\Attendance\CreateMultiple.cshtml" />
     <Content Include="Views\Condition\Index.cshtml" />
     <Content Include="Views\Condition\Create.cshtml" />
+    <Content Include="Views\Condition\Detail.cshtml" />
+    <Content Include="Views\Condition\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

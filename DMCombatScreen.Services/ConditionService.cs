@@ -47,5 +47,50 @@ namespace DMCombatScreen.Services
                 return query.ToArray();
             }
         }
+
+        public ConditionDetail GetConditionByID(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Conditions
+                        .Single(e => e.ConditionID == id);
+                return
+                    new ConditionDetail
+                    {
+                        ConditionID = entity.ConditionID,
+                        ConditionName = entity.ConditionName
+                    };
+            }
+        }
+
+        public bool UpdateCondition(ConditionEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Conditions
+                        .Single(e => e.ConditionID == model.ConditionID);
+                entity.ConditionName = model.ConditionName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCondition(int conditionID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Conditions
+                        .Single(e => e.ConditionID == conditionID);
+
+                ctx.Conditions.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
