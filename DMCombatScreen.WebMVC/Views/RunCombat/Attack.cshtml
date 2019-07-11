@@ -50,7 +50,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "RunCombat", new { id = Model.CombatID, SelectedCharacter = Model.CurrentTurn })
+    @Html.ActionLink("Back to List", "RunCombat", new { id = Model.CombatID, SelectedCharacter = Model.CurrentTurn - 1 })
 </div>
 
 @section Scripts {

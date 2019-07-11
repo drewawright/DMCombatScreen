@@ -20,5 +20,6 @@ namespace DMCombatScreen.Models
         public int? CurrentHP { get; set; }
         public int? MaxHP { get; set; }
         public int TurnOrderNumber { get; set; }
+        public List<string> Conditions { get; set; }
     }
 }

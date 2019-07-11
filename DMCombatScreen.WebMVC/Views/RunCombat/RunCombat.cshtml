@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.MaxHP)
         </th>
+        <th>
+            Conditions
+        </th>
         <th></th>
         <th>
     </tr>
@@ -47,15 +50,25 @@
                 @Html.DisplayFor(modelItem => item.MaxHP)
             </td>
 
+            <td>
+                @foreach (var condition in item.Conditions)
+                {
+                    @Html.Display(condition)
+                }
+            </td>
+
             @if (!item.IsPlayer)
             {
                 <td>
-                    @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
+                    @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter }) |
+                    @Html.ActionLink("Edit Conditions", "EditCondition", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
                 </td>
             }
             else
             {
-                <td></td>
+                <td>
+                    @Html.ActionLink("Edit Conditions", "EditCondition", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter })
+                </td>
             }
             <td>
                 @if (item.TurnOrderNumber == ViewBag.SelectedCharacter)

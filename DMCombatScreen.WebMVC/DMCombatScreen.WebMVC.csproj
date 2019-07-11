@@ -266,6 +266,7 @@
     <Content Include="Views\Condition\Detail.cshtml" />
     <Content Include="Views\Condition\Edit.cshtml" />
     <Content Include="Views\Condition\Delete.cshtml" />
+    <Content Include="Views\RunCombat\EditCondition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -139,7 +139,9 @@ namespace DMCombatScreen.Services
                                 MaxHP = e.Character.MaxHP,
                                 CurrentHP = e.CurrentHP,
                                 IsPlayer = e.Character.IsPlayer,
+                                Conditions = new string[0] { }.ToList()
                             });
+
                 return query.ToList();
             }
         }
@@ -152,16 +154,16 @@ namespace DMCombatScreen.Services
                     ctx.Attendances
                     .Single(e => e.ID == id);
 
-                    return 
-                        new RunCombatAttack
-                        {
-                            ID = query.ID,
-                            CharacterID = query.CharacterID,
-                            CharacterName = query.Character.Name,
-                            CombatID = query.CombatID,
-                            MaxHP = query.Character.MaxHP,
-                            CurrentHP = query.CurrentHP,
-                        };
+                return
+                    new RunCombatAttack
+                    {
+                        ID = query.ID,
+                        CharacterID = query.CharacterID,
+                        CharacterName = query.Character.Name,
+                        CombatID = query.CombatID,
+                        MaxHP = query.Character.MaxHP,
+                        CurrentHP = query.CurrentHP,
+                    };
             }
         }
 
@@ -178,5 +180,35 @@ namespace DMCombatScreen.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public RunCombatEditCondition GetEditCharacterConditionsModel(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx.Attendances
+                    .Include(e => e.Conditions)
+                    .Single(e => e.ID == id);
+
+                RunCombatEditCondition model =
+                    new RunCombatEditCondition
+                    {
+                        ID = query.ID,
+                        CharacterID = query.CharacterID,
+                        CharacterName = query.Character.Name,
+                        CombatID = query.CombatID,
+                    };
+                List<int> conditionIDs = new List<int>();
+                foreach(var condition in query.Conditions)
+                {
+                    conditionIDs.Add(condition.ConditionID);
+                }
+                model.ConditionIDs = conditionIDs;
+
+                return model;
+            }
+
+        }
+        
     }
 }

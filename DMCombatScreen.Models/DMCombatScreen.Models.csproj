@@ -61,9 +61,11 @@
     <Compile Include="ConditionEdit.cs" />
     <Compile Include="ConditionListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunCombatAssignedCondition.cs" />
     <Compile Include="RunCombatAttack.cs" />
     <Compile Include="RunCombatCharacter.cs" />
     <Compile Include="RunCombatDetail.cs" />
+    <Compile Include="RunCombatEditCondition.cs" />
     <Compile Include="RunCombatInitiative.cs" />
     <Compile Include="RunCombatListItem.cs" />
   </ItemGroup>
