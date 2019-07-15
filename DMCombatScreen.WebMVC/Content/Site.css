@@ -42,7 +42,19 @@ h2 {
     color: #2A2C2B;
 }
 
-.navbar-inverse .navbar-nav .open a:focus {
+    @media (min-width: 350px) {
+
+        .navbar .navbar-header .navbar-brand {
+            font-size: 1.3em;
+        }
+    }
+
+    .navbar-inverse .navbar-nav .open a:focus {
+    color: #fbfbfb;
+    background-color: #2a2c2b;
+}
+
+.navbar-inverse .navbar-nav .open .collapse a:focus {
     color: #fbfbfb;
     background-color: #2a2c2b;
 }
@@ -50,6 +62,12 @@ h2 {
 .dropdown-menu {
     background: #f44336;
     font-size: 1.6rem;
+}
+
+@media (max-width: 767px){
+.navbar-inverse .navbar-nav .open .dropdown-menu li a {
+    color: #fbfbfb;
+}
 }
 
     .dropdown-menu li a:hover {
@@ -91,6 +109,14 @@ textarea {
     background-color: #f44336;
 }
 
+.btn-default {
+    background-color: #f6f7f8;
+}
+
+.pagetitle {
+    color: #f44336;
+}
+
 .redline {
     border: 0;
     height: 2px;
@@ -99,7 +125,7 @@ textarea {
 
 
 .form-group-sm .form-control {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .panel {

@@ -20,33 +20,35 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CombatID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CombatName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="table-responsive">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CombatID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CombatName)
-            </td>
-            <td>
-                @Html.ActionLink("Roll Initiative", "RollInitiative", new { id = item.CombatID }) |
-                @Html.ActionLink("See Combatants", "Detail", new { id = item.CombatID }) |
-                @Html.ActionLink("Run Combat", "RunCombat", new { id = item.CombatID }) |
-                @Html.ActionLink("Delete", "Delete", "Combat", new { id=item.CombatID }) 
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.CombatID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CombatName)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CombatID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CombatName)
+                </td>
+                <td>
+                    @Html.ActionLink("Roll Initiative", "RollInitiative", new { id = item.CombatID }) |
+                    @Html.ActionLink("See Combatants", "Detail", new { id = item.CombatID }) |
+                    @Html.ActionLink("Run Combat", "RunCombat", new { id = item.CombatID }) |
+                    @Html.ActionLink("Delete", "Delete", "Combat", new { id = item.CombatID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

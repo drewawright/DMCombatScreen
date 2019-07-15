@@ -30,34 +30,37 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Character Name", "Index", new { sortOrder = ViewBag.CharSortParam })
-            <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
-        </th>
-        <th>
-            @Html.ActionLink("Combat Name", "Index", new { sortOrder = ViewBag.CombatSortParam })
-            <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
 
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CharacterName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CombatName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Detail", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
+            <th>
+                @Html.ActionLink("Character Name", "Index", new { sortOrder = ViewBag.CharSortParam })
+                <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+            </th>
+            <th>
+                @Html.ActionLink("Combat Name", "Index", new { sortOrder = ViewBag.CombatSortParam })
+                <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CharacterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CombatName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Detail", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

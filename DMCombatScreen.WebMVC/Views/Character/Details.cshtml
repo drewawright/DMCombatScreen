@@ -7,10 +7,10 @@
 <h2>Character Details</h2>
 
 <div>
-    
+    <h3 class="pagetitle"><strong>@Html.DisplayFor(model => model.Name)</strong></h3>
     <hr class="redline"/>
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.CharacterID)
         </dt>
 
@@ -24,7 +24,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
+        </dd>*@
         @if (!Model.IsPlayer)
         {
 
