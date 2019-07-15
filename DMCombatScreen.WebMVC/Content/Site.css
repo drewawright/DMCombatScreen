@@ -32,9 +32,29 @@ h2 {
     color: #fbfbfb;
 }
 
-.navbar-inverse .navbar-nav li a:hover {
-    text-decoration: underline;
+    .navbar-inverse .navbar-nav li a:hover {
+        text-decoration: underline;
+        background: #2a2c2b;
+    }
+
+.navbar .navbar-header .navbar-brand {
+    font-family: 'Metamorphous', cursive;
+    color: #2A2C2B;
 }
+
+.navbar-inverse .navbar-nav .open a:focus {
+    color: #fbfbfb;
+    background-color: #2a2c2b;
+}
+
+.dropdown-menu {
+    background: #f44336;
+    font-size: 1.6rem;
+}
+
+    .dropdown-menu li a:hover {
+        background: #2A2C2B;
+    }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -120,4 +140,8 @@ td {
 
 .table-links:hover {
     color: #f44336;
+}
+
+.table tbody tr.success td {
+    background-color: #fbc0bc;
 }
