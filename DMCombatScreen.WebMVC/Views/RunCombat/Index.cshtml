@@ -43,8 +43,8 @@
             <td>
                 @Html.ActionLink("Roll Initiative", "RollInitiative", new { id = item.CombatID }) |
                 @Html.ActionLink("See Combatants", "Detail", new { id = item.CombatID }) |
-                @Html.ActionLink("Run Combat", "RunCombat", new { id = item.CombatID })
-                @*@Html.ActionLink("Delete", "Delete", new { id=item.ID }) |*@
+                @Html.ActionLink("Run Combat", "RunCombat", new { id = item.CombatID }) |
+                @Html.ActionLink("Delete", "Delete", "Combat", new { id=item.CombatID }) 
             </td>
         </tr>
     }
