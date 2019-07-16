@@ -257,3 +257,7 @@ td {
 .table tbody tr.success td {
     background-color: #fbc0bc;
 }
+
+.footer-links {
+    text-align: right;
+}

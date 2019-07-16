@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/Content/Assets/d20-vector-geometric-transparent-black.png" class="nav-image navbar-left navbar-brand"/>
+                <img src="~/Content/Assets/d20-vector-geometric-transparent-black.png" class="nav-image navbar-left navbar-brand" />
                 @Html.ActionLink("GM Combat Screen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand appname" })
             </div>
             <div class="navbar-collapse collapse">
@@ -37,7 +37,6 @@
                         </li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -45,9 +44,16 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr class="blackline"/>
+        <hr class="blackline" />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Drew Wright</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>&copy; @DateTime.Now.Year - Drew Wright</p>
+                </div>
+                <div class="col-md-4 col-md-offset-4 footer-links">
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "table-links" })
+                </div>
+            </div>
         </footer>
     </div>
 

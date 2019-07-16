@@ -63,7 +63,7 @@
                 {
                     <td class="hpbar hidden-sm hidden-xs">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@item.CurrentHP" aria-valuemin="0" aria-valuemax="@item.MaxHP" style="min-width: 2em; width: @((@item.CurrentHP/@item.MaxHP)*100)%;">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@item.CurrentHP" aria-valuemin="0" aria-valuemax="@item.MaxHP" style="min-width: 2em; width: @((item.CurrentHP/item.MaxHP)*100)%;">
                                 @item.CurrentHP
                             </div>
                         </div>
