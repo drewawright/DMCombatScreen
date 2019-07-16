@@ -16,6 +16,11 @@
         @TempData["SaveResult"]
     </div>
 }
+<div class="row">
+    <div class="col-md-2">
+        @Html.ActionLink("Create New Character", "Create", null, new { @class = "btn btn-danger btn-lg" })
+    </div>
+</div>
 
 @using (Html.BeginForm())
 {
@@ -35,13 +40,8 @@
     </div>
 }
 
-<div class="row">
-    <div class="col-md-2">
-        @Html.ActionLink("Create New Character", "Create", null, new { @class = "btn btn-default btn-lg" })
-    </div>
-</div>
 
-<hr />
+<hr class="blackline"/>
 
 <div class="panel">
     <div class="table-responsive">

@@ -7,8 +7,8 @@
 <h2>Encounter Details</h2>
 
 <div>
-    <h4>AttendanceDetail</h4>
-    <hr />
+    <h3 class="pagetitle">@Model.CombatName</h3>
+    <hr class="redline"/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CharacterID)
@@ -54,6 +54,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "table-links" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "table-links" })
 </p>

@@ -184,7 +184,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Assets\d20logored.png" />
     <Content Include="Content\Assets\dmscreen.png" />
+    <Content Include="Content\Assets\dmscreenlogo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

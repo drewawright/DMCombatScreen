@@ -7,7 +7,7 @@
 <h2>Combats</h2>
 
 <p>
-    @Html.ActionLink("Create New Combat", "Create")
+    @Html.ActionLink("Create New Combat", "Create", null, new { @class = "btn btn-danger btn-lg" })
 </p>
 
 @if (TempData.ContainsKey("SaveResult"))
@@ -20,6 +20,8 @@
         @TempData["SaveResult"]
     </div>
 }
+
+<hr class="blackline" />
 
 <div class="table-responsive">
     <table class="table">
@@ -44,13 +46,13 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CombatID }) |
-                    @Html.ActionLink("Add Characters", "CreateMultiple", "Attendance", new { id = item.CombatID }, null) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CombatID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CombatID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CombatID }, new { @class = "table-links" }) |
+                    @Html.ActionLink("Add Characters", "CreateMultiple", "Attendance", new { id = item.CombatID }, new { @class = "table-links" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CombatID }, new { @class = "table-links" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CombatID }, new { @class = "table-links" })
                 </td>
                 <td>
-                    @Html.ActionLink("Run Combat", "RollInitiative", "RunCombat", new { id = item.CombatID }, null)
+                    @Html.ActionLink("Run Combat", "RollInitiative", "RunCombat", new { id = item.CombatID }, new { @class = "table-links" })
                 </td>
             </tr>
         }

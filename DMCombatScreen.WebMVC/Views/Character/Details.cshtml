@@ -72,6 +72,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CharacterID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CharacterID }, new { @class = "table-links" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "table-links" })
 </p>

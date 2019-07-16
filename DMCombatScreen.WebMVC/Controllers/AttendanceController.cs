@@ -150,7 +150,6 @@ namespace DMCombatScreen.WebMVC.Controllers
         {
             var svc = CreateAttendanceService();
             var detail = svc.GetAttendanceByID(id);
-            TempData["SaveResult"] = "Characters Successfully Added to Encounter";
             return View(detail);
         }
 

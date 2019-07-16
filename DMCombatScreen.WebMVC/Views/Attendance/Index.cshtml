@@ -6,10 +6,6 @@
 
 <h2>Encounter Attendance</h2>
 
-<p>
-    @Html.ActionLink("Add a new Character to a Combat", "Create")
-</p>
-
 @if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
@@ -19,16 +15,25 @@
         @TempData["SaveResult"]
     </div>
 }
-
-@using (Html.BeginForm())
-{
-    <div class="form-group form-inline">
+<div class="row">
+    <div class="col-md-6">
         <p>
-            Search by Character or Combat Name: @Html.TextBox("SearchString", null, htmlAttributes: new { @class = "form-control" })
-            <input type="submit" value="Search" class="btn btn-danger" />
+            @Html.ActionLink("Add a new Character to a Combat", "Create", null, new { @class = "btn btn-danger btn-lg" })
         </p>
     </div>
-}
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-group form-inline col-md-6">
+            <p>
+                Search by Character or Combat Name: @Html.TextBox("SearchString", null, htmlAttributes: new { @class = "form-control" })
+                <input type="submit" value="Search" class="btn btn-danger btn form-control" />
+            </p>
+        </div>
+    }
+</div>
+
+<hr class="blackline" />
 
 <div class="table-responsive">
 
@@ -55,9 +60,9 @@
                     @Html.DisplayFor(modelItem => item.CombatName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Detail", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "table-links" }) |
+                    @Html.ActionLink("Detail", "Details", new { id = item.ID }, new { @class = "table-links" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "table-links" })
                 </td>
             </tr>
         }

@@ -70,9 +70,9 @@ h2 {
 }
 }
 
-    .dropdown-menu li a:hover {
-        background: #2A2C2B;
-    }
+.dropdown-menu li a:hover {
+    background: #2A2C2B;
+}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -90,12 +90,21 @@ h2 {
 .jumbotron {
     font-family: 'Metamorphous', cursive;
     height: 90vh;
+    background-color: #f6f7f8;
 }
 
 .jumbotron h1 {
     position: absolute;
     top: 40%;
+    width: 80%;
     transform: translate(0%, 50%);
+}
+
+.logo {
+    position: absolute;
+    top: 40%;
+    width: 20%;
+    left: 65%;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -121,6 +130,12 @@ textarea {
     border: 0;
     height: 2px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(244, 67, 54, 0.75), rgba(0, 0, 0, 0));
+}
+
+.blackline {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(42, 44, 43, 0.75), rgba(0, 0, 0, 0));
 }
 
 
