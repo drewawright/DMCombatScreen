@@ -4,14 +4,13 @@
     ViewBag.Title = "EditCondition";
 }
 
-<h2>Edit Condition</h2>
+<h2>Edit Conditions for <span class="pagetitle">@Model.CharacterName</span></h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>@Html.DisplayFor(model => model.CharacterName)</h4>
         <hr />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -29,7 +28,7 @@
                         foreach (var condition in conditions)
                         {
                             <tr>
-                                <td>
+                                <td class="conditions-table">
                                     <input type="checkbox"
                                            name="selectedConditions"
                                            value="@condition.ConditionID"
@@ -46,12 +45,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-danger" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "RunCombat", new { id = Model.CombatID, SelectedCharacter = Model.CurrentTurn - 1 })
+    @Html.ActionLink("Back to List", "RunCombat", new { id = Model.CombatID, SelectedCharacter = Model.CurrentTurn - 1 }, new { @class = "table-links" })
 </div>
