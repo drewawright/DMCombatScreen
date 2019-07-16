@@ -4,7 +4,7 @@
     ViewBag.Title = "Detail";
 }
 
-<h2>Details of this Combat</h2>
+<h2>Details of <span class="pagetitle">@Model.First().CombatName</span></h2>
 
 <table class="table">
     <tr>
@@ -42,6 +42,6 @@
 
 </table>
 
-@Html.ActionLink("Return To Combat List", "Index") |
-@Html.ActionLink("Edit Participants", "Index", "Attendance", new { searchString = Model.First().CombatName}, null) |
-@Html.ActionLink("Run Combat", "RollInitiative", new { id = Model.First().CombatID })
+@Html.ActionLink("Return To Combat List", "Index", null, new { @class = "table-links" }) |
+@Html.ActionLink("Edit Participants", "Index", "Attendance", new { searchString = Model.First().CombatName}, new { @class = "table-links" }) |
+@Html.ActionLink("Run Combat", "RollInitiative", new { id = Model.First().CombatID }, new { @class = "table-links" })

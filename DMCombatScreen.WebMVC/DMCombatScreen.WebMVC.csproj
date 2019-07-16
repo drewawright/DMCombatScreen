@@ -184,6 +184,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Assets\d20-vector-geometric-transparent-black.png" />
     <Content Include="Content\Assets\d20logored.png" />
     <Content Include="Content\Assets\dmscreen.png" />
     <Content Include="Content\Assets\dmscreenlogo.png" />

@@ -17,8 +17,8 @@ namespace DMCombatScreen.Models
         public int? TotalInitiative { get; set; }
         public int? InitiativeAbilityScore { get; set; }
         public bool IsPlayer { get; set; }
-        public int? CurrentHP { get; set; }
-        public int? MaxHP { get; set; }
+        public double? CurrentHP { get; set; }
+        public double? MaxHP { get; set; }
         public int TurnOrderNumber { get; set; }
         public List<string> Conditions { get; set; }
     }
