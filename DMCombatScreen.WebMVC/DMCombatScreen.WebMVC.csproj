@@ -187,6 +187,7 @@
     <Content Include="Content\Assets\d20-logo-dark.png" />
     <Content Include="Content\Assets\d20-vector-geometric-transparent-black.png" />
     <Content Include="Content\Assets\d20logored.png" />
+    <Content Include="Content\Assets\dmscreen-transparent.png" />
     <Content Include="Content\Assets\dmscreen.png" />
     <Content Include="Content\Assets\dmscreenlogo.png" />
     <Content Include="Content\bootstrap-theme.css" />
