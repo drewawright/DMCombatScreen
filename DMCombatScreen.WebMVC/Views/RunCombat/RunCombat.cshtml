@@ -23,7 +23,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.CharacterName)
             </th>
-            <th>
+            <th class="hidden-sm hidden-xs">
                 @Html.DisplayNameFor(model => model.TotalInitiative)
             </th>
             <th>
@@ -53,7 +53,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CharacterName)
                 </td>
-                <td>
+                <td class="hidden-sm hidden-xs">
                     @Html.DisplayFor(modelItem => item.TotalInitiative)
                 </td>
                 <td>
@@ -86,15 +86,15 @@
 
                 @if (!item.IsPlayer)
                 {
-                    <td>
+                    <td class="player-links">
                         @Html.ActionLink("Attack", "Attack", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter }, new { @class = "table-links" }) |
                         @Html.ActionLink("Edit Conditions", "EditCondition", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter }, new { @class = "table-links" })
                     </td>
                 }
                 else
                 {
-                    <td>
-                        @Html.ActionLink("Edit Conditions", "EditCondition", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter }, new { @class = "table-links" })
+                    <td class="player-links">
+                        | @Html.ActionLink("Edit Conditions", "EditCondition", new { id = item.ID, currentTurn = ViewBag.SelectedCharacter }, new { @class = "table-links" })
                     </td>
                 }
                 <td>

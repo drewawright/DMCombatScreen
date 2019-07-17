@@ -108,9 +108,9 @@ namespace DMCombatScreen.Services
         public bool UpdateCharacter(CharacterEdit model)
         {
             CharacterType charType;
-            if (Enum.TryParse(model.CharacterType, out charType))
+           if (Enum.TryParse(model.CharacterTypeValue.ToString(), out charType))
             {
-                Enum.Parse(typeof(CharacterType), model.CharacterType);
+                Enum.Parse(typeof(CharacterType), model.CharacterTypeValue.ToString());
             }
 
             using (var ctx = new ApplicationDbContext())
@@ -127,7 +127,9 @@ namespace DMCombatScreen.Services
                 entity.IsPlayer = model.IsPlayer;
                 entity.TypeOfCharacter = charType;
 
-                return ctx.SaveChanges() == 1;
+                var actual = ctx.SaveChanges();
+
+                return actual == 1;
             }
         }
 

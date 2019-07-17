@@ -152,8 +152,12 @@ h2 {
 
 .jumbotron {
     font-family: 'Metamorphous', cursive;
-    height: 90vh;
+    height: 83vh;
     background-color: #f6f7f8;
+}
+
+.image-container {
+    height: 83vh;
 }
 
 .jumbotron h1 {
@@ -183,6 +187,10 @@ textarea {
 
 .btn-default {
     background-color: #f6f7f8;
+}
+
+.create-btn {
+    margin-bottom: 1em;
 }
 
 .pagetitle {
@@ -248,6 +256,10 @@ td {
 
 .table-links {
     color: #f44336;
+}
+
+.player-links {
+    text-align: right;
 }
 
 .table-links:hover {
