@@ -6,15 +6,14 @@
 
 <h2>Roll Initiative</h2>
 
+<h3>Combat : <span class="pagetitle">@Model.First().CombatName</span></h3>
+
 <hr class="redline" />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => Model[0].CombatID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => Model[0].CharacterName)
             </th>
@@ -37,9 +36,6 @@
             @Html.HiddenFor(model => model[i].InitiativeAbilityScore)
             @Html.HiddenFor(model => model[i].InitiativeModifier)
             <tr>
-                <td>
-                    @Html.DisplayFor(model => model[i].CombatID)
-                </td>
                 <td>
                     @Html.DisplayFor(model => model[i].CharacterName)
                 </td>
