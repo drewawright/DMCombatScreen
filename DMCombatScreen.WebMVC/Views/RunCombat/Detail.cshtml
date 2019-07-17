@@ -16,26 +16,34 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CharacterName)
-        </td>
-        @if (!item.IsPlayer)
-        {
+    @foreach (var item in Model)
+    {
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CurrentHP)
+                @Html.DisplayFor(modelItem => item.CharacterName)
             </td>
-        }
-        else
-        {
-            <td></td>
-        }
-    </tr>
-}
+            @if (!item.IsPlayer)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentHP)
+                </td>
+            }
+            else
+            {
+                <td></td>
+            }
+        </tr>
+    }
 
 </table>
-
-@Html.ActionLink("Return To Combat List", "Index", null, new { @class = "table-links" }) |
-@Html.ActionLink("Edit Participants", "Index", "Attendance", new { searchString = Model.First().CombatName}, new { @class = "table-links" }) |
-@Html.ActionLink("Roll Initiative", "RollInitiative", new { id = Model.First().CombatID }, new { @class = "table-links" })
+<div class="row">
+    <div class="col-md-4">
+        @Html.ActionLink("Return To Combat List", "Index", null, new { @class = "table-links" })
+    </div>
+    <div class="col-md-4 text-center">
+        @Html.ActionLink("Edit Participants", "Index", "Attendance", new { searchString = Model.First().CombatName }, new { @class = "table-links" })
+    </div>
+    <div class="col-md-4 text-right">
+        @Html.ActionLink("Roll Initiative", "RollInitiative", new { id = Model.First().CombatID }, new { @class = "btn btn-danger combat-btn" })
+    </div>
+</div>

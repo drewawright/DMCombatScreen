@@ -142,14 +142,14 @@ namespace DMCombatScreen.Services
                                 Conditions = new string[0] { }.ToList()
                             });
 
-                List<RunCombatCharacter> characterCheck = query.ToList();
+                List<RunCombatCharacter> characterList = query.ToList();
 
-                foreach (var character in characterCheck)
+                foreach (var character in characterList)
                 {
                     List<string> conditionsList = GetCharacterConditionNames(character);
                 }
 
-                return characterCheck;
+                return characterList;
             }
         }
 

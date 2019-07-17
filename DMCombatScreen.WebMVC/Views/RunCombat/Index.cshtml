@@ -7,7 +7,7 @@
 <h2>Run Combat!</h2>
 
 <p>
-    @Html.ActionLink("Create New Combat", "Create", "Combat", new { @class = "btn btn-danger btn-lg"})
+    @Html.ActionLink("Create New Combat", "Create", "Combat", new { @class = "btn btn-danger btn-lg" })
 </p>
 
 @if (TempData.ContainsKey("SaveResult"))
@@ -25,9 +25,6 @@
 <div class="table-responsive">
     <table class="table">
         <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.CombatID)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.CombatName)
             </th>
@@ -38,9 +35,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.CombatID)
-                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.CombatName)
                 </td>

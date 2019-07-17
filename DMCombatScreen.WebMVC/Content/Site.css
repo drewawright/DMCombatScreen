@@ -296,7 +296,8 @@ td {
 }
 
 .table-links:hover {
-    color: #f44336;
+    color: #2A2C2B; /*old color: #f44336*/
+    text-decoration: none;
 }
 
 .table tbody tr.success td {

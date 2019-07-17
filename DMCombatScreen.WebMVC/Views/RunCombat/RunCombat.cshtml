@@ -16,6 +16,13 @@
     </div>
 }
 
+@if (Model.First().TotalInitiative == null)
+{
+    <div class="alert alert-danger">
+        <span>Please</span> @Html.ActionLink("Roll Initiative", "RollInitiative", new { id = Model.First().CombatID }, new { @class = "btn btn-danger combat-btn" })
+    </div>
+}
+
 
 <div class="table-responsive">
     <table class="table">

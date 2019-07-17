@@ -14,5 +14,7 @@ namespace DMCombatScreen.Models
         public int CombatID { get; set; }
         [Display(Name = "Combat Name")]
         public string CombatName { get; set; }
+        public int? TotalInitiative { get; set; }
+        public bool InitiativeRolled { get; set; }
     }
 }
