@@ -288,6 +288,10 @@ textarea {
     font-size: .9em;
 }
 
+.help-block {
+    font-size: .8em;
+}
+
 /*color for elements used commonly across pages*/
 .pagetitle {
     color: #f44336;

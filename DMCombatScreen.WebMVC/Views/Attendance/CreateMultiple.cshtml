@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CombatName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CombatID", null, new { @class = "form-control" })
+                @Html.DropDownList("CombatID", null, new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.CombatName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -99,4 +99,21 @@
             $("." + key).prop('checked', value);
         });
     </script>
+    @*<script>
+        var numberValues = JSON.parse(localStorage.getItem('numberValues')) || {},
+            $numbers = $("#checkbox-container :input[type=number]");
+
+        $numbers.on("change", function () {
+            $numbers.each(function () {
+                numberValues[this.className] = this.value;
+            });
+
+            localStorage.setItem("numberValues", JSON.stringify(numberValues));
+        });
+
+        // On page load
+        $.each(numberValues, function (key, value) {
+            $("." + key).prop('checked', value);
+        });
+    </script>*@
 }
