@@ -79,7 +79,7 @@ h2 {
     border: none;
 }
 
-.nav li a{
+.nav li a {
     padding: 15px 10px;
 }
 
@@ -96,7 +96,6 @@ h2 {
 }
 
     .navbar-inverse .navbar-nav li a:hover {
-        
         background: #2a2c2b;
     }
 
@@ -105,14 +104,14 @@ h2 {
     color: #2A2C2B;
 }
 
-    @media (min-width: 350px) {
+@media (min-width: 350px) {
 
-        .navbar .navbar-header .navbar-brand {
-            font-size: 1.3em;
-        }
+    .navbar .navbar-header .navbar-brand {
+        font-size: 1.3em;
     }
+}
 
-    .navbar-inverse .navbar-nav .open a:focus {
+.navbar-inverse .navbar-nav .open a:focus {
     color: #fbfbfb;
     background-color: #2a2c2b;
 }
@@ -127,10 +126,10 @@ h2 {
     font-size: 1.6rem;
 }
 
-@media (max-width: 767px){
-.navbar-inverse .navbar-nav .open .dropdown-menu li a {
-    color: #fbfbfb;
-}
+@media (max-width: 767px) {
+    .navbar-inverse .navbar-nav .open .dropdown-menu li a {
+        color: #fbfbfb;
+    }
 }
 
 .dropdown-menu li a:hover {
@@ -170,10 +169,11 @@ h2 {
     animation: fadeIn 2s forwards;
 }
 
-@keyframes fadeIn{
+@keyframes fadeIn {
     from {
         clip-path: inset(0 100% 0 0)
     }
+
     to {
         clip-path: inset(0 0 0 0)
     }
@@ -186,7 +186,7 @@ h2 {
     left: -190px;
 }
 
-.dice-image{
+.dice-image {
     position: relative;
     top: -50px;
     left: -67px;
@@ -195,9 +195,14 @@ h2 {
     animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes diceRoll{
-    from {transform: translate(-1300%) rotate(0deg)}
-    to {transform: translate(0%) rotate(1080deg)}
+@-webkit-keyframes diceRoll {
+    from {
+        transform: translate(-1300%) rotate(0deg)
+    }
+
+    to {
+        transform: translate(0%) rotate(1080deg)
+    }
 }
 
 
@@ -205,7 +210,7 @@ h2 {
 
 /*Landing page for smaller devices*/
 
-@media (max-width: 991px){
+@media (max-width: 991px) {
     .logo-text {
         position: relative;
         top: 180px;
@@ -320,20 +325,34 @@ th a {
     color: #f44336;
 }
 
-th a:hover {
-    color: #f44336;
-}
+    th a:hover {
+        color: #f44336;
+    }
 
 td {
     border-bottom: 1px solid #f44336;
 }
 
 .table tbody tr:last-of-type td {
-    border: none;
+    border-bottom: none;
 }
 
-.hpbar {
-    width: 10%;
+@media (min-width: 992px) {
+    .hpbar {
+        width: 20%;
+        height: 30px;
+    }
+
+    .progress {
+        height: 30px;
+        background: #c7cfce;
+    }
+
+    .progress-bar {
+        font-size: 1em;
+        padding-top: 5px;
+        background-color: #12662e;
+    }
 }
 
 .conditions-table {
@@ -355,6 +374,16 @@ td {
 
 .table tbody tr.success td {
     background-color: #fbc0bc;
+}
+
+.charName {
+    border-right: 1px solid #f44336;
+    font-weight: 600;
+    height: 2em;
+}
+
+.condition-text {
+    color: #2A2C2B;
 }
 
 /*footer*/

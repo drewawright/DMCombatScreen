@@ -33,10 +33,12 @@
             <th class="hidden-sm hidden-xs">
                 @Html.DisplayNameFor(model => model.TotalInitiative)
             </th>
-            <th>
+            <th class="hidden-md hidden-lg">
                 @Html.DisplayNameFor(model => model.CurrentHP)
             </th>
-            <th class="hpbar hidden-sm hidden-xs"></th>
+            <th class="hpbar hidden-sm hidden-xs text-center">
+                Current Health
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaxHP)
             </th>
@@ -58,12 +60,14 @@
 
             <tr class="@selectedRow">
                 <td>
-                    @Html.DisplayFor(modelItem => item.CharacterName)
+                    <div class="charName"> 
+                        @Html.DisplayFor(modelItem => item.CharacterName)
+                    </div>
                 </td>
                 <td class="hidden-sm hidden-xs">
                     @Html.DisplayFor(modelItem => item.TotalInitiative)
                 </td>
-                <td>
+                <td class="hidden-md hidden-lg">
                     @Html.DisplayFor(modelItem => item.CurrentHP)
                 </td>
                 @if (!item.IsPlayer && item.CurrentHP != null)
@@ -87,7 +91,7 @@
                 <td>
                     @foreach (var condition in item.Conditions)
                     {
-                        <p>@condition</p>
+                        <p class="condition-text">@condition</p>
                     }
                 </td>
 
