@@ -162,12 +162,12 @@ h2 {
     height: 83vh;
 }
 
-.jumbotron h1 {
+.logo-text {
     position: relative;
     top: 180px;
     width: 80%;
     transform: translate(0%, 50%);
-    animation: fadeIn 4s forwards;
+    animation: fadeIn 2s forwards;
 }
 
 @keyframes fadeIn{
@@ -183,15 +183,15 @@ h2 {
     position: relative;
     top: 50px;
     width: 320px;
-    left: 31%;
+    left: -190px;
 }
 
 .dice-image{
     position: relative;
-    top: 85px;
-    left: 10%;
+    top: -50px;
+    left: -67px;
     width: 75px;
-    animation: diceRoll 2.5s linear;
+    animation: diceRoll 1.3s linear;
     animation-fill-mode: forwards;
 }
 
@@ -203,6 +203,56 @@ h2 {
 
 /*End Landing Page*/
 
+/*Landing page for smaller devices*/
+
+@media (max-width: 991px){
+    .logo-text {
+        position: relative;
+        top: 180px;
+        width: 80%;
+        transform: translate(0%, 70%);
+        animation: fadeInSmall 2s forwards;
+    }
+
+    @keyframes fadeInSmall {
+        from {
+            clip-path: inset(0 100% 0 0)
+        }
+
+        to {
+            clip-path: inset(0 0 0 0)
+        }
+    }
+
+    .logo {
+        position: relative;
+        top: -100px;
+        width: 320px;
+        left: -20px;
+    }
+
+    .dice-image {
+        position: relative;
+        top: -200px;
+        left: 105px;
+        width: 75px;
+        animation: diceRollSmall 1.3s linear;
+        animation-fill-mode: forwards;
+    }
+
+    @-webkit-keyframes diceRollSmall {
+        from {
+            transform: rotate(0deg)
+        }
+
+        to {
+            transform: rotate(1080deg)
+        }
+    }
+}
+
+/*End Landing page for smaller devices*/
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -210,6 +260,7 @@ textarea {
     max-width: 280px;
 }
 
+/*overriding bootstrap button styles to match page colors*/
 .btn-danger {
     background-color: #f44336;
 }
@@ -222,6 +273,11 @@ textarea {
     margin-bottom: 1em;
 }
 
+.combat-btn {
+    font-size: .9em;
+}
+
+/*color for elements used commonly across pages*/
 .pagetitle {
     color: #f44336;
 }
@@ -238,11 +294,12 @@ textarea {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(42, 44, 43, 0.75), rgba(0, 0, 0, 0));
 }
 
-
+/*increase font size in form fields (mainly for dropdowns)*/
 .form-group-sm .form-control {
     font-size: 1.4rem;
 }
 
+/*table styling*/
 .panel {
     background: #f6f7f8;
     box-shadow: none;
@@ -291,10 +348,6 @@ td {
     text-align: right;
 }
 
-.combat-btn {
-    font-size: .9em;
-}
-
 .table-links:hover {
     color: #2A2C2B; /*old color: #f44336*/
     text-decoration: none;
@@ -303,6 +356,8 @@ td {
 .table tbody tr.success td {
     background-color: #fbc0bc;
 }
+
+/*footer*/
 
 .footer-links {
     text-align: right;
