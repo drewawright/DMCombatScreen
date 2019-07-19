@@ -15,7 +15,7 @@ namespace DMCombatScreen.WebMVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Create and Run encounters for your Game";
 
             return View();
         }

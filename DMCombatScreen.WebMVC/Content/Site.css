@@ -362,7 +362,7 @@ td {
     .progress-bar {
         font-size: 1em;
         padding-top: 5px;
-        background-color: #12662e;
+        background: linear-gradient(90deg, rgba(18,102,46,1) 0%, rgba(18,105,47,1) 40%, rgba(26,148,66,1) 100%);
     }
 }
 
@@ -384,7 +384,7 @@ td {
 }
 
 .table tbody tr.success {
-    background: linear-gradient(90deg, rgba(250,167,161,1) 0%, rgba(247,122,113,1) 12%, rgba(254,230,228,1) 100%);
+    background: linear-gradient(90deg, rgba(244,67,54,1) 0%, rgba(245,92,81,1) 14%, rgba(246,247,248,1) 100%);
 }
 
 .table tbody tr.success td{
