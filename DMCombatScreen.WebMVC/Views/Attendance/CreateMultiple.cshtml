@@ -10,7 +10,7 @@
 {
     <div class="form-group form-inline">
         <p>
-            Filter By Category: @Html.DropDownList("CharType", null, "All", new { @class = "form-control" })
+            Filter Characters By Category: @Html.DropDownList("CharType", null, "All", new { @class = "form-control" })
             <input type="submit" value="Filter" class="btn btn-danger form-control" />
         </p>
     </div>
@@ -34,11 +34,19 @@
 
         <div class="form-group">
             <div class="col-md-10">
+                <h3 style="font-weight: 600;">Select Characters to Add</h3>
                 <table class="table" id="checkbox-container">
                     <tr>
                         <th></th>
-                        <th>@Html.ActionLink("Character Name", "CreateMultiple", new { sortOrder = ViewBag.NameSortParam })</th>
-                        <th>@Html.ActionLink("Character Type", "CreateMultiple", new { sortOrder = ViewBag.TypeSortParam })</th>
+                        <th>
+                            @Html.ActionLink("Character Name", "CreateMultiple", new { sortOrder = ViewBag.NameSortParam })
+                            <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+                        </th>
+
+                        <th>
+                            @Html.ActionLink("Character Type", "CreateMultiple", new { sortOrder = ViewBag.TypeSortParam })
+                            <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+                        </th>
                         <th>Number to add</th>
                     </tr>
 

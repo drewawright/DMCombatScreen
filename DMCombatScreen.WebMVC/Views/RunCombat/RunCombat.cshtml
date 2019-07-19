@@ -64,10 +64,10 @@
                         @Html.DisplayFor(modelItem => item.CharacterName)
                     </div>
                 </td>
-                <td class="hidden-sm hidden-xs">
+                <td class="hidden-sm hidden-xs combat-number">
                     @Html.DisplayFor(modelItem => item.TotalInitiative)
                 </td>
-                <td class="hidden-md hidden-lg">
+                <td class="hidden-md hidden-lg combat-number">
                     @Html.DisplayFor(modelItem => item.CurrentHP)
                 </td>
                 @if (!item.IsPlayer && item.CurrentHP != null)
@@ -84,7 +84,7 @@
                 {
                     <td class="hpbar hidden-sm hidden-xs"></td>
                 }
-                <td>
+                <td class="combat-number">
                     @Html.DisplayFor(modelItem => item.MaxHP)
                 </td>
 

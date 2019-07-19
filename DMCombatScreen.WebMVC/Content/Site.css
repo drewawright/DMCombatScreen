@@ -356,6 +356,7 @@ td {
     .progress {
         height: 30px;
         background: #c7cfce;
+        box-shadow: -3px 2px 5px #2A2C2B;
     }
 
     .progress-bar {
@@ -382,14 +383,23 @@ td {
     text-decoration: none;
 }
 
-.table tbody tr.success td {
-    background-color: #fbc0bc;
+.table tbody tr.success {
+    background: linear-gradient(90deg, rgba(250,167,161,1) 0%, rgba(247,122,113,1) 12%, rgba(254,230,228,1) 100%);
+}
+
+.table tbody tr.success td{
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .charName {
     border-right: 1px solid #f44336;
     font-weight: 600;
     height: 2em;
+    letter-spacing: 0.15em;
+}
+
+.combat-number {
+    font-weight: 600;
 }
 
 .condition-text {

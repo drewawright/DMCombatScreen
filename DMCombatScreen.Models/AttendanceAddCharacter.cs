@@ -10,7 +10,7 @@ namespace DMCombatScreen.Models
     public class AttendanceAddCharacter
     {
         public int CombatID { get; set; }
-        [Display(Name="Combat Name")]
+        [Display(Name="Select Combat")]
         public string CombatName { get; set; }
         public List<AttendanceCharacterInfo> CharacterList { get; set; }
     }
