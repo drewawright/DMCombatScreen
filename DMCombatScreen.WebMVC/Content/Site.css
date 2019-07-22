@@ -1,4 +1,9 @@
-﻿body {
+﻿/*ColorDesigner.io pallette 
+
+    https://colordesigner.io/#f44336-D9CB9E-374140-2A2C2B-BDC3C7
+*/
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     background: #f6f7f8;
@@ -57,7 +62,7 @@ h2 {
 
 /*adjusted nav breakpoint end*/
 
-
+/*Navbar styling*/
 .navbar {
     background: #f44336;
 }
@@ -251,7 +256,7 @@ h2 {
         }
 
         to {
-            transform: rotate(1080deg)
+            transform: rotate(720deg)
         }
     }
 }
@@ -312,6 +317,15 @@ textarea {
 /*increase font size in form fields (mainly for dropdowns)*/
 .form-group-sm .form-control {
     font-size: 1.4rem;
+}
+
+.dl-horizontal dt, dd {
+    padding-top: 1em;
+    width: 180px;
+}
+
+.dl-horizontal dd {
+    padding-left: 1em;
 }
 
 /*table styling*/
@@ -383,6 +397,8 @@ td {
     text-decoration: none;
 }
 
+/*RunCombat page Table*/
+
 .table tbody tr.success {
     background: linear-gradient(90deg, rgba(244,67,54,1) 0%, rgba(245,92,81,1) 8%, rgba(246,247,248,1) 100%);
 }
@@ -405,6 +421,8 @@ td {
 .condition-text {
     color: #2A2C2B;
 }
+
+/*Roll Initiative link*/
 
 .back-link {
     margin-top: 1em;

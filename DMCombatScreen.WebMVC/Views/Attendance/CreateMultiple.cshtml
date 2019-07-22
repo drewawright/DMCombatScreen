@@ -91,7 +91,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-    //Persist Checkboxes
+        //Persist Checkboxes
         var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
             $checkboxes = $("#checkbox-container :checkbox");
 
@@ -109,7 +109,7 @@
         });
     </script>
     <script>
-    //Persist NumberToAdd values
+        //Persist NumberToAdd values
         var numberValues = JSON.parse(localStorage.getItem('numberValues')) || {},
             $numbers = $("#checkbox-container :input[type=number]");
 
@@ -127,12 +127,13 @@
         });
     </script>
     <script>
-    //Remove extra classes from number inputs
+        //Remove extra classes from number inputs
         $(document).ready(function () {
             $("input").removeClass("text-box single-line")
         })
     </script>
     <script>
+        //Bootstrap tooltip plugin
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })

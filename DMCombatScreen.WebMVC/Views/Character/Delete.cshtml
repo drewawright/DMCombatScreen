@@ -26,7 +26,8 @@
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
+    @if (!Model.IsPlayer)
+    {
         <dt>
             @Html.DisplayNameFor(model => model.MaxHP)
         </dt>
@@ -50,6 +51,7 @@
         <dd>
             @Html.DisplayFor(model => model.InitiativeAbilityScore)
         </dd>
+    }
 
         <dt>
             @Html.DisplayNameFor(model => model.CharacterType)
