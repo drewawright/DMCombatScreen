@@ -319,6 +319,7 @@ textarea {
     font-size: 1.4rem;
 }
 
+/*Detail View Styling*/
 .dl-horizontal dt, dd {
     padding-top: 1em;
     width: 180px;
