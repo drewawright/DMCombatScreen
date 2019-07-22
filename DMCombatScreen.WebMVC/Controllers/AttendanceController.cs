@@ -23,8 +23,8 @@ namespace DMCombatScreen.WebMVC.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                model = model.Where(m => m.CombatName.Contains(searchString)
-                                    || m.CharacterName.Contains(searchString));
+                model = model.Where(m => m.CombatName.ToLower().Contains(searchString.ToLower())
+                                    || m.CharacterName.ToLower().Contains(searchString.ToLower()));
             }
 
             switch (sortOrder)

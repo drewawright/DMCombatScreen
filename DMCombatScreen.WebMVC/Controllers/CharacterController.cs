@@ -27,7 +27,7 @@ namespace DMCombatScreen.WebMVC.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                model = model.Where(m => m.Name.Contains(searchString));
+                model = model.Where(m => m.Name.ToLower().Contains(searchString.ToLower()));
             }
 
 
