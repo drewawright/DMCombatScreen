@@ -12,6 +12,7 @@ namespace DMCombatScreen.Models
         public int CharacterID { get; set; }
         public string CharacterName { get; set; }
         public bool IsChecked { get; set; }
+        
         public int? NumberOfAttendances { get; set; }
         public int CharacterTypeValue { get; set; }
         [Display(Name = "Character Type")]

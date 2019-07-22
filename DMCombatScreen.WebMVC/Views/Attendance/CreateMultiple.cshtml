@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CombatName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CombatID", null, new { @class = "form-control" } )
+                @Html.DropDownList("CombatID", null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CombatName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -67,7 +67,7 @@
                                     @Html.DisplayFor(m => Model.CharacterList[i].CharacterTypeName)
                                 </td>
                                 <td>
-                                    @Html.EditorFor(m => Model.CharacterList[i].NumberOfAttendances)
+                                    @Html.EditorFor(m => Model.CharacterList[i].NumberOfAttendances, new { htmlAttributes = new { @class = Model.CharacterList[i].CharacterID + "n" } })
                                 </td>
                             </tr>
                         }
@@ -107,7 +107,7 @@
             $("." + key).prop('checked', value);
         });
     </script>
-    @*<script>
+    <script>
         var numberValues = JSON.parse(localStorage.getItem('numberValues')) || {},
             $numbers = $("#checkbox-container :input[type=number]");
 
@@ -121,7 +121,12 @@
 
         // On page load
         $.each(numberValues, function (key, value) {
-            $("." + key).prop('checked', value);
+            $("." + key).attr('value', value);
         });
-    </script>*@
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("input").removeClass("text-box single-line")
+        })
+    </script>
 }
