@@ -67,7 +67,7 @@
                                     @Html.DisplayFor(m => Model.CharacterList[i].CharacterTypeName)
                                 </td>
                                 <td>
-                                    @Html.EditorFor(m => Model.CharacterList[i].NumberOfAttendances, new { htmlAttributes = new { @class = Model.CharacterList[i].CharacterID + "n" } })
+                                    @Html.EditorFor(m => Model.CharacterList[i].NumberOfAttendances, new { htmlAttributes = new { @class = Model.CharacterList[i].CharacterID + "n", data_toggle = "tooltip", data_placement = "bottom", title = "Can be left blank for 1" } })
                                 </td>
                             </tr>
                         }
@@ -90,7 +90,8 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script> //Persist Checkboxes
+    <script>
+    //Persist Checkboxes
         var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
             $checkboxes = $("#checkbox-container :checkbox");
 
@@ -107,7 +108,8 @@
             $("." + key).prop('checked', value);
         });
     </script>
-    <script> //Persist NumberToAdd values
+    <script>
+    //Persist NumberToAdd values
         var numberValues = JSON.parse(localStorage.getItem('numberValues')) || {},
             $numbers = $("#checkbox-container :input[type=number]");
 
@@ -124,9 +126,15 @@
             $("." + key).attr('value', value);
         });
     </script>
-    <script> //Remove extra classes from number inputs
+    <script>
+    //Remove extra classes from number inputs
         $(document).ready(function () {
             $("input").removeClass("text-box single-line")
+        })
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
 }
