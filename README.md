@@ -4,11 +4,7 @@ GM Combat Screen is an app for creating Characters and Combats for Dungeons and 
 
 ## Installation
 
-Clone the github directory (https://github.com/drewawright/DMCombatScreen) and run a local version through Visual Studio.
-
--or-
-
-Run the deployed version through http://gmcombatscreen.azurewebsites.net 
+Clone the github directory (https://github.com/drewawright/DMCombatScreen) and run a local version through Visual Studio. 
 
 ## Usage
 GM Combat Screen lets you create characters and combats for your Table-Top Role Playing Games that use an initiative system for turn order.
